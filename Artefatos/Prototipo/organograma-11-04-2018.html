@@ -1,0 +1,95 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="portal/resources/style-guide/css/fluig-style-guide.min.css">
+<link rel="stylesheet" type="text/css" href="portal/resources/style-guide/css/fluig-style-guide-carousel.min.css">
+<script src="portal/resources/js/jquery.js"></script>
+<script src="portal/resources/js/jquery-ui.min.js"></script>
+<script src="portal/resources/js/mustache/mustache-min.js"></script>
+<script src="portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+<script src="portal/resources/style-guide/js/fluig-style-guide-chart.min.js"></script>
+<script src="portal/resources/style-guide/js/fluig-style-guide-carousel.min.js"></script>
+<script src="google-chart/loader.js"></script>
+</head>
+<style type="text/css">
+	.cargo {
+		color:blue; 
+		font-weight: bold;
+	}
+	
+	.nome {		
+		color:black; 
+		font-style:italic;
+		font-weight: bold;
+	}
+</style>
+<body>
+    	
+	<h2>Organograma</h2>
+		
+	<div id="chart_div_org_chats">
+	
+	</div>		
+	
+	<img width="400px;" heigth="400px;" src="https://forum.fluig.com/attachments/1458" />
+	
+</body>
+
+<script type="text/javascript">
+
+	google.charts.load('current', {packages:["orgchart"]});
+      google.charts.setOnLoadCallback(drawChart);
+
+	  function buildF(nome, cargo) {
+		if (nome == null || nome.length == 0) {
+			nome = "&nbsp;";
+		}
+		if (cargo == null || cargo.length == 0) {
+			cargo = "&nbsp;";
+		}
+		var divNome = '<div class="nome">' + nome + '</div>';
+		var divCargo = '<div class="cargo">' + cargo + '</div>';
+		var divResult = divNome + divCargo + "&nbsp;";
+		return divResult;
+	  }
+	  
+	  function buildRow(raiz, codigo, nome, cargo) {
+	    var rowResult = [
+			{v: codigo, f:buildF(nome, cargo)}, raiz, cargo, 
+		];
+		return rowResult;
+	  }
+	  
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Name');
+        data.addColumn('string', 'Manager');
+        data.addColumn('string', 'ToolTip');
+
+        // For each orgchart box, provide the name, manager, and tooltip to show.
+        data.addRows([
+        
+		  buildRow('', 'Recepcao', '', 'Recepção'),
+		  
+		  buildRow('', 'CEO', 'Valmir', 'CEO'),
+		  
+		  buildRow('', 'RH', 'Valmir', 'RH'),
+		  buildRow('', 'TI', '', 'TI'),
+		
+			   buildRow('CEO', 'Adm_Financeiro', 'Gustavo', 'Adm / Financeiro'),
+					buildRow('Adm_Financeiro', 'Financeiro', '', 'Financeiro'),
+					buildRow('Adm_Financeiro', 'Controller', '', 'Controller'),
+			
+			   buildRow('CEO', 'Operacao', 'Evaldo', 'Operação'),
+					buildRow('Operacao', 'BackOffice', '', 'BackOffice'),
+					buildRow('Operacao', 'Supervisão_Escobs', '', 'Supervisão Escobs'),
+					buildRow('Operacao', 'Juridico', '', 'Jurídico'),
+        ]);
+
+        // Create the chart.
+        var chart = new google.visualization.OrgChart(document.getElementById('chart_div_org_chats'));
+        // Draw the chart, setting the allowHtml option to true for the tooltips.
+        chart.draw(data, {allowHtml:true});
+      }
+</script>
+
+</html>

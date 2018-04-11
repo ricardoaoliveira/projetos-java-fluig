@@ -1,0 +1,15 @@
+application.type=widget
+application.code=Acessos_Externos
+application.title=Acessos Externos
+application.description=Acessos Externos
+application.category=SYSTEM
+application.renderer=freemarker
+application.resource.js.1=/resources/js/Acessos_Externos.js
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+

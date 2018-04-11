@@ -1,0 +1,35 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="portal/resources/style-guide/css/fluig-style-guide.min.css">
+<link rel="stylesheet" type="text/css" href="portal/resources/style-guide/css/fluig-style-guide-carousel.min.css">
+<script src="portal/resources/js/jquery.js"></script>
+<script src="portal/resources/js/jquery-ui.min.js"></script>
+<script src="portal/resources/js/mustache/mustache-min.js"></script>
+<script src="portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+<script src="portal/resources/style-guide/js/fluig-style-guide-chart.min.js"></script>
+<script src="portal/resources/style-guide/js/fluig-style-guide-carousel.min.js"></script>
+<script src="input-mask/jquery.inputmask.bundle.js"></script>
+<script src="mask/jquery.mask.min.js"></script>
+</head>
+<style type="text/css">
+	
+</style>
+<body>
+    <div class="fluig-style-guide">
+		
+		<input type="text" id="numero" name="numero" />
+		
+    </div>
+	
+	
+</body>
+
+<script type="text/javascript">
+	/*$("#numero").inputmask("decimal", {
+	    colorMask: false,
+	});*/
+	
+	$('#numero').mask('00/00/0000');
+</script>
+
+</html>
