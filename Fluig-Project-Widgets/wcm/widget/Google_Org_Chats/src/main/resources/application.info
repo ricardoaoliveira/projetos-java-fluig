@@ -6,6 +6,7 @@ application.category=SYSTEM
 application.renderer=freemarker
 application.resource.js.1=/resources/js/Google_Org_Chats.js
 application.resource.js.2=/resources/js/loader.js
+application.resource.css.1=/resources/css/Google_Org_Chats.css
 developer.code=Lenovo-PC
 developer.name=Ricardo Oliveira
 developer.url=http://www.fluig.com
