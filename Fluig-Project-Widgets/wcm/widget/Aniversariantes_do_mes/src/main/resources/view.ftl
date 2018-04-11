@@ -19,7 +19,7 @@
 				{{titulo}}
 			</h2>
 			<div id="divImage_${instanceId}">
-				<p><img alt="" src="{{>urlImagem}}" style= "max-height: 400px; max-width: 100%; width: 100%;" ></p>
+				<p><img alt="" src="{{imageUrl}}" style= "max-height: 400px; max-width: 100%; width: 100%;" ></p>
 			</div>
 		</div>
 	{{/content}}
