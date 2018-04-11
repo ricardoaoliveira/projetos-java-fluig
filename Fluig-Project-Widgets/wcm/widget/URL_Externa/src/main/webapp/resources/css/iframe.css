@@ -1,0 +1,12 @@
+.WCMIFrame {
+    padding: 0 20px;
+}
+
+.WCMIFrameEdit {
+    padding: 0 10px 10px 10px;
+}
+
+.WCMIFrame iframe {
+    border: none;
+    display: none;
+}

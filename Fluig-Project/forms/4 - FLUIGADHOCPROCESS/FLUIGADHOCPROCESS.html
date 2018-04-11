@@ -1,0 +1,118 @@
+<html>
+<head>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	<link href="FLUIGADHOCPROCESS.css" type="text/css" rel="stylesheet" />
+
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+
+	<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	<script src="FLUIGADHOCPROCESS.js"></script>
+
+</head>
+
+<body class="fluig-style-guide background">
+	<form role="form" name="formAdhoc" id="formAdHoc" style="display:none">
+		<div class="container-fluid">
+			
+			<div class="row">
+				<div class="col-md-12">
+					<span class="canvas fs-display-inline-block">
+						<img src="FLUIGADHOCPROCESS1.png" class="fs-display-inline-block">
+						<h3 class="fs-display-inline-block fs-v-align-middle">i18n.translate("adhoc.form.process")</h3>
+					</span>
+				</div>
+			</div>
+
+			<div class="row">
+				<h3 class="adhoc-subtitle">i18n.translate("adhoc.formMobile.requestDescription")</h3>
+				<div class="col-md-12">
+					<div class="form-group">
+						<textarea class="form-control fs-no-border fs-no-bg fs-no-shadow no-resize" rows="2" name="activity" id="activity" readonly></textarea>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<h3 class="adhoc-subtitle">i18n.translate("adhoc.form.additionalInformation")</h3>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="request">i18n.translate("adhoc.form.request")</label>
+						<input name="request" id="request" type="hidden">
+						<input name="requestDescription" id="requestDescription" type="hidden">
+
+						<input name="requestText" class="form-control fs-no-border fs-no-bg fs-no-shadow" id="requestText" type="text" readonly>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label>i18n.translate("adhoc.form.date")</label>
+						<input class="form-control fs-no-border fs-no-bg fs-no-shadow" name="opening" id="opening" type="text" readonly>
+					</div>
+				</div> 
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label>i18n.translate("adhoc.form.deadline")</label>
+						<input class="form-control fs-no-border fs-no-bg fs-no-shadow" name="deadline" id="deadline" type="text" readonly>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>i18n.translate("adhoc.form.adhocname")</label>
+						<input class="form-control fs-no-border fs-no-bg fs-no-shadow" name="adHocProcess" id="adHocProcess" type="text" readonly>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>i18n.translate("adhoc.form.status")</label>
+						<select name="taskStatus" id="taskStatus" class="form-control">
+							<option value="1">i18n.translate("adhoc.form.completedTask")</option>
+							<option value="2">i18n.translate("adhoc.form.declinedTask")</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>i18n.translate("adhoc.form.description")</label>
+						<textarea class="form-control fs-no-border fs-no-bg fs-no-shadow no-resize" name="adHocDescription" id="adhoc-description" type="textarea" rows="5" readonly></textarea>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="observation">i18n.translate("adhoc.form.observation")</label>
+						<textarea class="form-control" name="observation" id="observation" rows="5"></textarea>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>i18n.translate("adhoc.form.requestor")</label>
+						<input class="form-control fs-no-border fs-no-bg fs-no-shadow" name="requester" id="requester" type="text" readonly>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

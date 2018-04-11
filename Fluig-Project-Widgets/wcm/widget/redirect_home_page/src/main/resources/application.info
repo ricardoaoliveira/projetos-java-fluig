@@ -1,0 +1,14 @@
+application.type=widget
+application.code=redirect_home_page
+application.title=Redirect Home Page
+application.description=Redirect Home Page
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=false
+view.file=view.ftl
+edit.file=edit.ftl
+

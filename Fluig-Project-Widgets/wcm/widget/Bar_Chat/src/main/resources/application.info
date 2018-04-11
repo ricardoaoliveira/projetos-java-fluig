@@ -1,0 +1,14 @@
+application.type=widget
+application.code=Bar_Chat
+application.title=Bar Chat
+application.description=Bar Chat
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+

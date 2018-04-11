@@ -1,0 +1,46 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="jquery.phone.brazil.js"></script>
+	<script type="text/javascript" src="Telefones.js"></script>
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+
+	<input type="hidden" id="ds_descriptor" name="ds_descriptor" />
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6">
+				<label for="nm">i18n.translate("telefones.form.nome")</label>
+				<span class="required text-danger"><strong>*</strong></span> 
+				<div class="input-group" style="width: 100%;">
+					<input class="form-control" id="nm" name="nm" type="text" onchange="updateDescriptorOnChange(this);" />
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+				<label for="nm">i18n.translate("telefones.form.ramal")</label>
+				<div class="input-group" style="width: 100%;">
+					<input class="form-control" id="ramal" name="ramal" maxlength="3" mask="000" type="text" onchange="updateDescriptorOnChange(this);" />
+				</div>
+			</div>
+			<div class="col-md-4">
+				<label for="nm">i18n.translate("telefones.form.fone")</label>
+				<span class="required text-danger"><strong>*</strong></span> 
+				<div class="input-group" style="width: 100%;">
+					<input class="form-control class-phone" id="fone" name="fone" type="text" onchange="updateDescriptorOnChange(this);" />
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+</div>
+</body>
+</html>

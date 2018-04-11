@@ -1,0 +1,20 @@
+application.type=layout
+application.code=Layout_3_Verticais
+application.title=Layout 3 Verticais
+application.description=Layout 3 Verticais
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+layout.defaultSlot=SlotA
+layout.file=layout.ftl
+locale.file.base.name=Layout_3_Verticais
+slot.SlotGlobalAlert=alertpopover
+slot.SlotInstantSearch=suggestsearch
+slot.SlotLogin=sociallogin
+slot.SlotMenu=menu
+slot.SlotUsePolicy=usepolicy
+slot.SlotMessagingNotify=socialmessagingnotify
+application.icon=icon.png
+

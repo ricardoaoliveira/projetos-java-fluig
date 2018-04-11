@@ -1,0 +1,15 @@
+application.type=widget
+application.code=Google_Gauge_Chart_V2
+application.title=Google Gauge Chart V2
+application.description=Google Gauge Chart V2
+application.category=SYSTEM
+application.renderer=freemarker
+application.resource.js.1=/resources/js/Google_Gauge_Chart_V2.js
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+

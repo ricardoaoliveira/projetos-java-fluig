@@ -1,0 +1,15 @@
+application.category=SYSTEM,WCM
+application.code=editable
+application.description=Editable example
+application.product=WCM
+application.renderer=freemarker
+application.resource.js.1=/resources/js/editable.js
+locale.file.base.name=editable
+application.title=Editable example
+application.type=widget
+application.uiwidget=true
+developer.code=TOTVS
+developer.name=TOTVS S.A.
+developer.url=http\://www.totvs.com
+simple.deploy=true
+view.file=view.ftl

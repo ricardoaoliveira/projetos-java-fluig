@@ -1,0 +1,13 @@
+#printBt, #printBtView { display:none; }
+
+.background { background-repeat: no-repeat; background-image: url(FLUIGADHOCPROCESS2.png); }
+
+.canvas { background-color: #ED145A; width: 250px; height: 45px; margin-bottom: 20px; }
+
+.canvas img { margin: 0 12px; }
+
+.canvas h3 { margin-top: 13px !important; }
+
+.adhoc-subtitle { border-left: 5px solid #ED145A; padding-left: 5px; margin-left: 15px; margin-top: 0 !important; }
+
+.no-resize { resize: none !important; }

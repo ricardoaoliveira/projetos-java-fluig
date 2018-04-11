@@ -1,0 +1,17 @@
+application.type=widget
+application.code=URL_Externa
+application.title=URL Externa
+application.description=Widget URL Externa
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=false
+view.file=view.ftl
+edit.file=edit.ftl
+application.icon=icon.png
+locale.file.base.name=URL_Externa
+application.resource.css.1=/resources/css/iframe.css
+application.resource.js.2=/resources/js/iframe.js

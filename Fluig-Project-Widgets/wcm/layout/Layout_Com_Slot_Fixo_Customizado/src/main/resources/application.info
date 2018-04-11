@@ -1,0 +1,20 @@
+application.type=layout
+application.code=Layout_Com_Slot_Fixo_Customizado
+application.title=Layout Com Slot Fixo Customizado
+application.description=Layout Com Slot Fixo Customizado
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+layout.defaultSlot=SlotA
+layout.file=layout.ftl
+locale.file.base.name=Layout_Com_Slot_Fixo_Customizado
+slot.SlotGlobalAlert=alertpopover
+slot.SlotInstantSearch=suggestsearch
+slot.SlotLogin=sociallogin
+slot.SlotMenu=menu
+slot.SlotUsePolicy=usepolicy
+slot.SlotMessagingNotify=socialmessagingnotify
+application.icon=icon.png
+

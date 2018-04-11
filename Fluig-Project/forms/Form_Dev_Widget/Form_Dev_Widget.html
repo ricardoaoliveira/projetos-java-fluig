@@ -1,0 +1,64 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide-carousel.min.css">
+	<script src="/portal/resources/style-guide/js/fluig-style-guide-carousel.min.js"></script>
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<input type="hidden" name="txtDev" id="txtDev" />
+	<div id="carousel-example-generic"></div>
+</form>
+</div>
+</body>
+<script type="text/javascript">
+	var callback = {
+		success: function(data) {
+			console.log(data);
+			console.log("total: " + data.values.length);
+			console.log("values: " + data.values);
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log(jqXHR, textStatus, errorThrown);
+		}
+	};
+	var dataset = DatasetFactory.getDataset('colleague', null, null, null, callback);
+	
+	var images = [
+	    {
+	        //src: './images/bnr-carousel-img-01.jpg',
+	        alt: 'First image',
+	        title: 'First image',
+	        description: 'First image description',
+	        linktarget: '_blank',
+	        linkhref: 'http://www.fluig.com',
+	        linktext: 'fluig'
+	    },
+	    {
+	        //src: './images/bnr-carousel-img-02.jpg',
+	        alt: 'Second image',
+	        title: 'Second image',
+	        description: 'Second image description',
+	        linktarget: '_blank',
+	        linkhref: 'http://style.fluig.com',
+	        linktext: 'Style Guide'
+	    }
+	];
+	 
+	var settings = {
+	    id: 'myFluigCarouselExample',
+	    images: images,
+	    indicators: true,
+	    startIndex: 0,
+	    interval: 5000
+	};
+	 
+	var carousel = FLUIGC.carousel('#carousel-example-generic', settings);
+</script>
+</html>

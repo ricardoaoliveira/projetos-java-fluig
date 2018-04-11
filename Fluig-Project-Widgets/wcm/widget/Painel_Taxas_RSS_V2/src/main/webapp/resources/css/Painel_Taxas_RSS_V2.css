@@ -1,0 +1,46 @@
+.cabecalho {
+	color: white !important;
+	font-weight: bold !important;
+	font-family: 'Calibri' !important;
+	background-color: Navy !important;
+}
+
+.linha_impar {
+	color: black !important;
+	font-family: 'Calibri' !important;
+	text-align: center !important;
+}
+
+.linha_impar td {
+	background-color: LightSteelBlue !important;
+}
+
+.linha_impar td a {
+	color: black !important;
+}
+
+.linha_par {
+	color: white !important;
+	font-family: 'Calibri' !important;
+	text-align: center !important;
+}
+
+.linha_par td {
+	background-color: SteelBlue !important;
+}
+
+.linha_par td a {
+	color: white !important;
+}
+
+.divTitulo {
+	text-align: center;
+	color: white !important;
+	font-weight: bold !important;
+	font-family: 'Calibri' !important;
+}
+
+.divConteudo {
+	text-align: center;
+	color: black !important;
+}

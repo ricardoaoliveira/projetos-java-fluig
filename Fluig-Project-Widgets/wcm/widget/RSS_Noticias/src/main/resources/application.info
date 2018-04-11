@@ -1,0 +1,16 @@
+application.type=widget
+application.code=RSS_Noticias
+application.title=RSS Noticias
+application.description=RSS Noticias
+application.category=SYSTEM
+application.renderer=freemarker
+application.resource.js.1=/resources/js/RSS_Noticias.js
+application.resource.js.2=/resources/js/jquery.getFeed.js
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+

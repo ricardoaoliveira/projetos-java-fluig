@@ -1,0 +1,22 @@
+.cabecalho_painel_taxas_rss {
+	color: white !important;
+	font-weight: bold !important;
+	font-family: 'Calibri' !important;
+	background-color: Navy !important;
+}
+
+.corpo_impar_painel_taxas_rss {
+	color: black !important;
+	font-weight: bold !important;
+	font-family: 'Calibri' !important;
+	font-size: 11px;
+	background-color: LightSteelBlue !important;
+}
+
+.corpo_par_painel_taxas_rss {
+	color: white !important;
+	font-weight: bold !important;
+	font-family: 'Calibri' !important;
+	font-size: 11px;
+	background-color: SteelBlue !important;
+}

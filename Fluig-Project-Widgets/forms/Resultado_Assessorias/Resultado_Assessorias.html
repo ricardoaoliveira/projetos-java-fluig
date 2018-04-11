@@ -1,0 +1,197 @@
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css"
+		href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	<link rel="stylesheet" type="text/css"
+		href="/portal/resources/style-guide/css/fluig-style-guide-filter.min.css">
+
+	<link href="Resultado_Assessorias.css" type="text/css" rel="stylesheet" />
+
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+
+	<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	<script src="/portal/resources/style-guide/js/fluig-style-guide-filter.min.js"></script>
+	
+	<script src="input-mask/jquery.inputmask.bundle.js"></script>
+	<script src="mask/jquery.mask.min.js"></script>
+
+	<script src="Resultado_Assessorias.js"></script>
+</head>
+<body class="fluig-style-guide background">
+	<form role="form" name="Resultado_Assessoriasform" id="Resultado_Assessoriasform">
+		
+		<input type="hidden" id="ds_descriptor" name="ds_descriptor" />
+		
+		<div class="container-fluid">
+
+			<div class="row">				
+
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label>i18n.translate("resultado_assessorias.form.nm")</label>
+						<span class="required text-danger"><strong>*</strong></span>
+						<div class="input-group" style="width: 100%;">							
+							<input class="form-control" name="nm" id="nm" type="text" />
+						</div>
+					</div>					
+				</div>
+				
+			</div>
+
+			<div class="row">
+				<div style="display: block" id="divEscobs">
+
+					<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tableDetail">
+						<table tablename="tbescobs" cellspacing="0" id="tbescobs" noaddbutton=true
+								deleteicon="Resultado_Assessorias4.png" style="display: none" class="table">
+							<thead>
+								<tr class="tableHeadRow">
+									<th class="tableColumn">i18n.translate("resultado_assessorias.form.nm_escob")
+										<span class="required text-danger"><strong>*</strong></span>
+									</th>
+									<th class="tableColumn">i18n.translate("resultado_assessorias.form.vl")
+										<span class="required text-danger"><strong>*</strong></span>
+									</th>
+									<th>
+										&nbsp;
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<input type="text" name="nm_escob" class="form-control" maxlength="40" />
+										</div>
+									</td>
+									
+									<td class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<input type="text" name="vl" class="form-control" maxlength="200" onfocus="addMaskDecimalToVrEscob(this);" style="text-align: right;" />
+										</div>
+									</td>
+									
+									<td class="col-md-4 col-sm-4">
+										&nbsp;
+									</td>
+									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<button type="button" class="btn btn-primary" data-toggle="button" id="btnAddEscob"
+						onclick="addEscob()">i18n.translate("resultado_assessorias.form.Addescob")</button>
+				</div>
+				
+			</div>
+			
+			<div class="row" style="display:none;">
+				<div style="display: block" id="divCores">
+
+					<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tableDetail">
+						<table tablename="tbcores" cellspacing="0" id="tbcores" noaddbutton=true
+								deleteicon="Indicadores_Operacao4.png" style="display: none" class="table">
+							<thead>
+								<tr class="tableHeadRow">
+									<th class="tableColumn">i18n.translate("resultado_assessorias.form.cor")
+										<span class="required text-danger"><strong>*</strong></span>
+									</th>
+									<th class="tableColumn">i18n.translate("resultado_assessorias.form.vl_inicial")
+										<span class="required text-danger"><strong>*</strong></span>
+									</th>
+									<th class="tableColumn">i18n.translate("resultado_assessorias.form.vl_final")
+										<span class="required text-danger"><strong>*</strong></span>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<input type="text" name="cor" class="form-control" maxlength="40" />
+										</div>
+									</td>
+									
+									<td class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<input type="text" name="vl_inicial" class="form-control" maxlength="200" />
+										</div>
+									</td>
+									
+									<td class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<input type="text" name="vl_final" class="form-control" maxlength="200" />
+										</div>
+									</td>
+									
+									<td class="col-md-4 col-sm-4">
+										&nbsp;
+									</td>
+									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<button type="button" class="btn btn-primary" data-toggle="button" id="btnAddCor"
+						onclick="addCor()">i18n.translate("resultado_assessorias.form.Addcor")</button>
+				</div>
+				
+			</div>
+			
+		</div>
+	</form>
+
+	<script type="text/javascript">
+		function addEscob() {
+
+			$('#tbescobs').show();
+
+			var row = wdkAddChild('tbescobs');
+			
+			$("#vl___" + row).inputmask("decimal", {
+			    colorMask: false,
+			});
+		}
+		
+		function addMaskDecimalToVrEscob(elem) {
+			$(elem).inputmask("decimal", {
+			    colorMask: false
+			});
+		}
+		
+		function hideButtonAddEscob() {
+			$( "btnAddEscob" ).hide();
+		}
+		
+		function showButtonAddEscob() {
+			$( "btnAddEscob" ).show();
+		}
+		
+		
+		function addCor() {
+
+			$('#tbcores').show();
+
+			var row = wdkAddChild('tbcores');
+		}
+		
+		function hideButtonAddCor() {
+			$( "btnAddCor" ).hide();
+		}
+		
+		function showButtonAddCor() {
+			$( "btnAddCor" ).show();
+		}
+	</script>
+
+</body>
+</html>

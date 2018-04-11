@@ -1,0 +1,14 @@
+application.type=widget
+application.code=Widget_Blank
+application.title=Widget_Blank
+application.description=Widget_Blank
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=false
+view.file=view.ftl
+edit.file=edit.ftl
+

@@ -1,0 +1,199 @@
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css"
+		href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	<link rel="stylesheet" type="text/css"
+		href="/portal/resources/style-guide/css/fluig-style-guide-filter.min.css">
+
+	<link href="Indicadores_Operacao.css" type="text/css" rel="stylesheet" />
+
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+
+	<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	<script src="/portal/resources/style-guide/js/fluig-style-guide-filter.min.js"></script>
+
+	<script src="input-mask/jquery.inputmask.bundle.js"></script>
+	<script src="mask/jquery.mask.min.js"></script>
+
+	<script src="Indicadores_Operacao.js"></script>
+</head>
+<body class="fluig-style-guide background">
+	<form role="form" name="Indicadores_Operacaoform" id="Indicadores_Operacaoform">
+		
+		<input type="hidden" id="ds_descriptor" name="ds_descriptor" />
+		
+		<div class="container-fluid">
+
+			<div class="row">				
+
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label>i18n.translate("indicadores_operacao.form.nm")</label>
+						<span class="required text-danger"><strong>*</strong></span>
+						<div class="input-group" style="width: 100%;">							
+							<input class="form-control" name="nm" id="nm" type="text" />
+						</div>
+					</div>					
+				</div>
+				
+			</div>
+
+			<div class="row">
+				<div style="display: block" id="divPeriodos">
+
+					<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tableDetail">
+						<table tablename="tbperiodos" cellspacing="0" id="tbperiodos" noaddbutton=true
+								deleteicon="Indicadores_Operacao4.png" style="display: none" class="table">
+							<thead>
+								<tr class="tableHeadRow">
+									<th class="tableColumn">i18n.translate("indicadores_operacao.form.mes_ano")
+										<span class="required text-danger"><strong>*</strong></span>
+									</th>
+									<th class="tableColumn">i18n.translate("indicadores_operacao.form.vl")
+										<span class="required text-danger"><strong>*</strong></span>
+									</th>
+									<th>
+										&nbsp;
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<input type="text" name="mes_ano" class="form-control" maxlength="40" />
+										</div>
+									</td>
+									
+									<td class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<input type="text" name="vl" class="form-control" maxlength="200" onfocus="addMaskDecimalToVrEscob(this);" style="text-align: right;" />
+										</div>
+									</td>
+									
+									<td class="col-md-4 col-sm-4">
+										&nbsp;
+									</td>
+									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<button type="button" class="btn btn-primary" data-toggle="button" id="btnAddPeriodo"
+						onclick="addPeriodo()">i18n.translate("indicadores_operacao.form.Addperiodo")</button>
+				</div>
+				
+			</div>
+			
+			<div class="row" style="display:none;">
+				<div style="display: block" id="divCores">
+
+					<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tableDetail">
+						<table tablename="tbcores" cellspacing="0" id="tbcores" noaddbutton=true
+								deleteicon="Indicadores_Operacao4.png" style="display: none" class="table">
+							<thead>
+								<tr class="tableHeadRow">
+									<th class="tableColumn">i18n.translate("indicadores_operacao.form.cor")
+										<span class="required text-danger"><strong>*</strong></span>
+									</th>
+									<th class="tableColumn">i18n.translate("indicadores_operacao.form.vl_inicial")
+										<span class="required text-danger"><strong>*</strong></span>
+									</th>
+									<th class="tableColumn">i18n.translate("indicadores_operacao.form.vl_final")
+										<span class="required text-danger"><strong>*</strong></span>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<input type="text" name="cor" class="form-control" maxlength="40" />
+										</div>
+									</td>
+									
+									<td class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<input type="text" name="vl_inicial" class="form-control" maxlength="200" />
+										</div>
+									</td>
+									
+									<td class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<input type="text" name="vl_final" class="form-control" maxlength="200" />
+										</div>
+									</td>
+									
+									<td class="col-md-4 col-sm-4">
+										&nbsp;
+									</td>
+									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<button type="button" class="btn btn-primary" data-toggle="button" id="btnAddCor"
+						onclick="addCor()">i18n.translate("indicadores_operacao.form.Addcor")</button>
+				</div>
+				
+			</div>
+			
+		</div>
+	</form>
+
+	<script type="text/javascript">
+		function addPeriodo() {
+
+			$('#tbperiodos').show();
+
+			var row = wdkAddChild('tbperiodos');
+			
+			$("#mes_ano___" + row).mask("AAA/99");
+			
+			$("#vl___" + row).inputmask("decimal", {
+			    colorMask: false,
+			});
+		}
+		
+		function addMaskDecimalToVrEscob(elem) {
+			$(elem).inputmask("decimal", {
+			    colorMask: false
+			});
+		}
+		
+		function hideButtonAddPeriodo() {
+			$( "btnAddPeriodo" ).hide();
+		}
+		
+		function showButtonAddPeriodo() {
+			$( "btnAddPeriodo" ).show();
+		}
+		
+		
+		function addCor() {
+
+			$('#tbcores').show();
+
+			var row = wdkAddChild('tbcores');
+		}
+		
+		function hideButtonAddCor() {
+			$( "btnAddCor" ).hide();
+		}
+		
+		function showButtonAddCor() {
+			$( "btnAddCor" ).show();
+		}
+	</script>
+
+</body>
+</html>
