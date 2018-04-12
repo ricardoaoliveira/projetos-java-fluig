@@ -46,7 +46,7 @@
 		
 			buildRow('', 'CEO', 'Valmir', 'CEO'),
 		
-			buildRow('', 'RH', 'Valmir', 'RH'),
+			buildRow('', 'RH', '', 'RH'),
 			buildRow('', 'TI', '', 'TI'),
 		
 			buildRow('CEO', 'Adm_Financeiro', 'Gustavo', 'Adm / Financeiro'),

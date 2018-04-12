@@ -109,7 +109,7 @@
 									<th>
 										<div class="row">
 											<div class="col-md-12 divTitulo">
-												Reunião Copom Selic
+												Dólar PTAX
 											</div>
 										</div>	
 									</th>
@@ -118,12 +118,12 @@
 									<td class="linha_impar">
 										<div class="row">
 											<div class="col-md-12 divConteudo">
-												{{selic.reuniaoCopom.data}}
+												Compra: <strong> R$ {{cambio.dolarPtax.valorCompra}} </strong>
 											</div>											
 										</div>
 										<div class="row">
 											<div class="col-md-12 divConteudo">
-												&nbsp;
+												Venda: <strong> R$ {{cambio.dolarPtax.valorVenda}} </strong>
 											</div>
 										</div>
 									</td>
@@ -232,9 +232,17 @@
 		}
 	};
 	
+	var cambio = {
+		dolarPtax: {
+			valorCompra: '',
+			valorVenda: ''
+		}
+	};
+	
 	var urlSelic = 'http://conteudo.bcb.gov.br/api/feed/pt-br/PAINEL_INDICADORES/juros'; // selic
 	var urlPoupanca = "http://conteudo.bcb.gov.br/api/feed/pt-br/PAINEL_INDICADORES/poupanca"; // poupanca
 	var urlInflacao = "http://conteudo.bcb.gov.br/api/feed/pt-br/PAINEL_INDICADORES/inflacao"; // inflacao
+	var urlCambio = "http://conteudo.bcb.gov.br/api/feed/pt-br/PAINEL_INDICADORES/cambio"; // cambio
 	
 	var showObjectContentSplit = false;
 	var showObjectTaxas = false;
@@ -343,6 +351,44 @@
 				console.log(inflacao);
 			}
 			
+			atualizarCambio();
+			
+		  }
+		});
+	};
+	
+	var atualizarCambio = function() {
+		$.ajax({
+		  type: 'GET',
+		  url: "https://api.rss2json.com/v1/api.json?rss_url=" + urlCambio,
+		  dataType: 'jsonp',
+		  success: function(result) {
+			
+			console.log("Atualizar Cambio");
+			
+			var contentsSplit = null;
+			
+			for (var i=0; i<result.items.length; i++) {
+				
+				if (result.items[i].title == 'Dólar (PTAX)') {
+					
+					var content = result.items[i].content.replace("</div>", " ");
+					
+					contentsSplit = result.items[i].content.split("<div>");
+				}
+			}
+			
+			if (showObjectContentSplit) {
+				console.log(contentsSplit);
+			}
+			
+			cambio.dolarPtax.valorCompra = contentsSplit[3].split("</div>")[0];
+			cambio.dolarPtax.valorVenda = contentsSplit[6].split("</div>")[0];
+			
+			if (showObjectTaxas) {
+				console.log(cambio);
+			}
+			
 			atualizarApresentacao();
 			
 		  }
@@ -358,6 +404,7 @@
 				selic: selic,
 				poupanca: poupanca,
 				inflacao: inflacao,
+				cambio: cambio,
 				divClass: 'col-xs-12 col-sm-12 col-md-12 col-lg-12',
 				divClassChildren: 'col-xs-12 col-sm-6 col-md-6 col-lg-6',				
 				}
