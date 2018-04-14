@@ -21,12 +21,19 @@
 		</div>
 		
 		<div class="row">
-			<button class="btn btn-default btn-block" id="btnCarregarMais_${instanceId}" onclick="renderizarMais();" style="display:none;">
-				Carregar mais
-			</button>			
-			<button class="btn btn-default btn-block" id="btnRecolher_${instanceId}" onclick="renderizarMenos();" style="display:none;">
-				Recolher
-			</button>			
+			<div class="col-md-12">
+				<button class="btn btn-default btn-block" id="btnCarregarMais_${instanceId}" onclick="renderizarMais();" style="display:none;">
+					Carregar mais
+				</button>
+			</div>			
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">			
+				<button class="btn btn-default btn-block" id="btnRecolher_${instanceId}" onclick="renderizarMenos();" style="display:none;">
+					Recolher
+				</button>
+			</div>
 		</div>
 		
     </div>
@@ -47,29 +54,28 @@
 		<div id='collapse_${instanceId}{{index}}' class='panel-collapse collapse'>
 			<div class='panel-body'>				
 				<div class='row'>			
-					<div class='col-md-12'>
-						
+					<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>						
 						{{#hasDetail}}
 						<a href="{{linkDetail}}" target='_blank'> 
-							<img src="{{image}}" style="width: 150px; height: 150px;" />
+							<img src="{{image}}" style="width: {{imageWidth}}px; height: {{imageHeight}}px;" />
 						</a>
 						{{/hasDetail}}
 						
 						{{^hasDetail}}
 						<a> 
-							<img src="{{image}}" style="width: 150px; height: 150px;" />
+							<img src="{{image}}" style="width: {{imageWidth}}px; height: {{imageHeight}}px;" />
 						</a>
 						{{/hasDetail}}
 						
-					</div>				
-				</div>			
-				<div class="row">
-					<div class='col-md-12'>
+					</div>			
+					<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>		
 						<span>
-							{{vicinity}}
+							{{formatted_phone_number}}
+							<br/><br/>
+							{{formatted_address}}		
 						</span>
 					</div>
-				</div>
+				</div>		
 			</div>
 		</div>
 	</div>
@@ -84,8 +90,46 @@
 		api_key: 'AIzaSyCxdnwc7OENllv7qUQfvp3sp8U8oHAZsQs',
 		types: ['restaurant'],
 		latitude: -23.5702177,
-		longitude: -46.6928957
+		longitude: -46.6928957,
+		image: {
+			width: 150,
+			height: 150
+		}
 	};
+
+	var dataset = DatasetFactory.getDataset("ds_restaurantes_proximos");
+	if (dataset != null && dataset.values.length > 0) {
+		
+		var param_restaurantes_proximos = dataset.values[0];
+		
+		if (param_restaurantes_proximos.distancia != null) {
+			config.distancia = parseInt(param_restaurantes_proximos.distancia);
+		}
+		
+		if (param_restaurantes_proximos.min_show != null) {
+			config.minShow = parseInt(param_restaurantes_proximos.min_show);
+		}
+		
+		if (param_restaurantes_proximos.api_key != null) {
+			config.api_key = param_restaurantes_proximos.api_key;
+		}
+		
+		if (param_restaurantes_proximos.latitude != null) {
+			config.latitude = parseFloat(param_restaurantes_proximos.latitude);
+		}
+		
+		if (param_restaurantes_proximos.longitude != null) {
+			config.longitude = parseFloat(param_restaurantes_proximos.longitude);
+		}
+		
+		if (param_restaurantes_proximos.image_width != null) {
+			config.image.width = parseFloat(param_restaurantes_proximos.image_width);
+		}
+		
+		if (param_restaurantes_proximos.image_height != null) {
+			config.image.height = parseFloat(param_restaurantes_proximos.image_height);
+		}
+	}
 
 	var script = document.createElement('script');
 	script.src = "https://maps.googleapis.com/maps/api/js?key=" + config.api_key + "&libraries=places&callback=initMap";
@@ -96,7 +140,7 @@
 		var imageUrl = null;	
 	
 		if (place.photos != null && place.photos.length > 0) {
-			imageUrl = place.photos[0].getUrl({'maxWidth': 150, 'maxHeight': 150});
+			imageUrl = place.photos[0].getUrl({'maxWidth': config.image.width, 'maxHeight': config.image.height});
 		} else {
 			imageUrl = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + place.reference;
 		}
@@ -176,26 +220,85 @@
             position: place.geometry.location
           });
 		  
-		  placeHelper = {
-			name: place.name,
-			image: buildUrlImage(place),
-			linkDetail: buildLinkDetail(place),
-			vicinity: place.vicinity,
-			index: i,
-			hasDetail: function() {
-				return this.linkDetail != "#";
-			}
+		  place.linkDetail = buildLinkDetail(place);
+		  place.index = i;
+		  place.formatted_address = '';
+		  place.formatted_phone_number = '';
+		  place.hasDetail= function() {
+			return this.linkDetail != "#";
 		  };
+		  place.image= buildUrlImage(place);
+		  place.imageWidth= config.image.width;
+		  place.imageHeight= config.image.height;
 		  
-		  data.content.push(placeHelper);
+		  data.content.push(place);
 		  
 		  bounds.extend(place.geometry.location);
         }
 		
 		map.fitBounds(bounds);
 		
-		renderizarMenos();
+		fillDetails();
       }
+	  
+	  var countDataContent = 0;
+	  var countFillDetails = 0;
+	  
+	  var details = [];
+	  
+	  var fillDetails = function() {
+	  
+	    countDataContent = data.content.length;
+		countFillDetails = 0;
+		
+		var placeHelper = null;
+		
+	    for (var i=0; i<data.content.length; i++) {
+			service.getDetails({
+			  placeId: data.content[i].place_id
+				}, function(resp, status) {
+				  if (status === google.maps.places.PlacesServiceStatus.OK) {
+					details.push(resp);
+				  }
+				  countFillDetails++;
+				  
+				  if (countFillDetails == countDataContent) {
+				    updateData();					
+				  }
+				});
+		}
+	  };
+	  
+	  var updateData = function() {
+	  
+	    var detail = null;
+	   
+		for (var i=0; i<data.content.length; i++) {
+			detail = getDetail(data.content[i].place_id);
+			console.log(detail);
+			if (detail != null) {
+				data.content[i].formatted_address = detail.formatted_address;
+				data.content[i].formatted_phone_number = detail.formatted_phone_number;
+				if (detail.url != null) {
+					data.content[i].linkDetail = detail.url;
+				}				
+				data.content[i].opening_hours = detail.opening_hours;
+				data.content[i].price_level = detail.price_level;
+				data.content[i].rating = detail.rating;
+			}
+		}
+		
+		renderizarMenos();
+	  };
+	  
+	  var getDetail = function(place_id) {
+		for (var i=0; i<details.length; i++) {
+			if (details[i].place_id = place_id) {
+				return details[i];
+			}
+		}		
+		return null;
+	  };
 	  
 	  var renderizarMenos = function() {
 		var template = $("#templateAccordion_${instanceId}").html();
