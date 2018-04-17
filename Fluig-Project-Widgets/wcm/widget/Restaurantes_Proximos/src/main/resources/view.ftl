@@ -47,7 +47,7 @@
 	<div class='panel panel-default'>
 			<div class='panel-heading'>
 				<h4 class='panel-title'>
-					<a id="place_${instanceId}{{index}}" class='collapse-icon up' onclick="viewRestaurant({{index}});" data-toggle='collapse' data-parent='#accordion_${instanceId}' href='#collapse_${instanceId}{{index}}'>
+					<a id="place_${instanceId}{{index}}" class='collapse-icon up' onclick="viewRestaurant({{index}});" data-parent='#accordion_${instanceId}' href='javascript:void(0);'>
 					{{name}}
 				</h4>
 			</div>

@@ -18,6 +18,33 @@ var AcessosExternos = SuperWidget.extend({
     							data.content[i].version);
     		}
     		
+    		if (data.content.length % 2 !==0) {
+    			data.content.push({
+    				nome: '',
+    				url: '',
+    				imageUrl: ''
+    			});
+    		}
+    		
+    		var lastIndex = data.content.length;
+    		
+    		for (var i=0; i<data.content.length; i++) {
+    			data.content[i].index = i;
+    			data.content[i].isFirst = function() {
+    				return this.index == 0;
+    			};
+    			data.content[i].isLast = function() {
+    				return this.index == lastIndex;
+    			};
+    			data.content[i].insertRow = function() {
+    				if (this.index % 2 === 0) {
+    					return true;
+    				} else {
+    					return false;
+    				}
+    			};
+    		}
+    		
     		try {
     			var html = Mustache.render(template, data);
         		
