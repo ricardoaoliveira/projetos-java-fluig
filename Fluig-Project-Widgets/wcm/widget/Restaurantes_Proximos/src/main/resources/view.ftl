@@ -47,11 +47,11 @@
 	<div class='panel panel-default'>
 			<div class='panel-heading'>
 				<h4 class='panel-title'>
-					<a id="place_${instanceId}{{index}}" class='collapse-icon up' data-toggle='collapse' data-parent='#accordion_${instanceId}' href='#collapse_${instanceId}{{index}}'>
+					<a id="place_${instanceId}{{index}}" class='collapse-icon up' onclick="viewRestaurant({{index}});" data-toggle='collapse' data-parent='#accordion_${instanceId}' href='#collapse_${instanceId}{{index}}'>
 					{{name}}
 				</h4>
 			</div>
-		<div id='collapse_${instanceId}{{index}}' class='panel-collapse collapse'>
+		<div id='collapse_${instanceId}{{index}}' class='panel-collapse collapse in'>
 			<div class='panel-body'>				
 				<div class='row'>			
 					<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>						
@@ -78,6 +78,35 @@
 				</div>		
 			</div>
 		</div>
+	</div>
+	{{/content}}
+</script>
+
+<script id="templateAccordionBody_${instanceId}" type="text/template">
+	{{#content}}
+	<div class='panel-body'>				
+		<div class='row'>			
+			<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>						
+				{{#hasDetail}}
+				<a href="{{linkDetail}}" target='_blank'> 
+					<img src="{{image}}" style="width: {{imageWidth}}px; height: {{imageHeight}}px;" />
+				</a>
+				{{/hasDetail}}
+				
+				{{^hasDetail}}
+				<a> 
+					<img src="{{image}}" style="width: {{imageWidth}}px; height: {{imageHeight}}px;" />
+				</a>
+				{{/hasDetail}}
+			</div>			
+			<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>		
+				<span>
+					{{formatted_phone_number}}
+					<br/><br/>
+					{{formatted_address}}		
+				</span>
+			</div>
+		</div>			
 	</div>
 	{{/content}}
 </script>
@@ -185,122 +214,101 @@
           radius: config.distancia,
           type: config.types,
 		  opennow: true,
-        }, processResults);
+        }, placesCallback);
       }	
 	  
-      function processResults(results, status, pagination) {
+      function placesCallback(places, status, pagination) {
         if (status !== google.maps.places.PlacesServiceStatus.OK) {
           return;
         } else {
-          createMarkers(results);
-        }
-      }
-	  
-      function createMarkers(places) {
-        var bounds = new google.maps.LatLngBounds();
-        var placesList = document.getElementById('places_${instanceId}');
-
-		var placeHelper = null;
-		var placeDetail = null;
-		
-        for (var i = 0, place; place = places[i]; i++) {
-		  
-		  var image = {
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(25, 25)
-          };
-
-          var marker = new google.maps.Marker({
-            map: map,
-            icon: image,
-            title: place.name,
-            position: place.geometry.location
-          });
-		  
-		  place.linkDetail = buildLinkDetail(place);
-		  place.index = i;
-		  place.formatted_address = '';
-		  place.formatted_phone_number = '';
-		  place.hasDetail= function() {
-			return this.linkDetail != "#";
-		  };
-		  place.image= buildUrlImage(place);
-		  place.imageWidth= config.image.width;
-		  place.imageHeight= config.image.height;
-		  
-		  data.content.push(place);
-		  
-		  bounds.extend(place.geometry.location);
-        }
-		
-		map.fitBounds(bounds);
-		
-		fillDetails();
-      }
-	  
-	  var countDataContent = 0;
-	  var countFillDetails = 0;
-	  
-	  var details = [];
-	  
-	  var fillDetails = function() {
-	  
-	    countDataContent = data.content.length;
-		countFillDetails = 0;
-		
-		var placeHelper = null;
-		
-	    for (var i=0; i<data.content.length; i++) {
-			service.getDetails({
-			  placeId: data.content[i].place_id
-				}, function(resp, status) {
-				  if (status === google.maps.places.PlacesServiceStatus.OK) {
-					details.push(resp);
-				  }
-				  countFillDetails++;
+          
+			for (var i = 0, place; place = places[i]; i++) {
+			  
+				  detail = null;
 				  
-				  if (countFillDetails == countDataContent) {
-				    updateData();					
+				  place.linkDetail = buildLinkDetail(place);
+				  place.index = i;
+				  place.formatted_address = '';
+				  place.formatted_phone_number = '';
+				  place.hasDetail= function() {
+					return this.linkDetail != "#";
+				  };
+				  place.image= buildUrlImage(place);
+				  place.imageWidth= config.image.width;
+				  place.imageHeight= config.image.height;
+				  
+				  data.content.push(place);
+			}
+			
+			renderizarMenos();
+        }
+      }
+	  
+  	  var currentIndex = 0;
+	  
+	  var viewRestaurant = function(index) {
+	  
+		currentIndex = index;
+	  
+		if (data.content[index].ok == null) {
+			service.getDetails({
+			  placeId: data.content[index].place_id
+				}, function(detail, status) {
+				  if (status === google.maps.places.PlacesServiceStatus.OK) {
+
+					var template = $("#templateAccordionBody_${instanceId}").html();
+
+					var bodyData = {
+						content: []
+					};
+					
+					if (detail.place_id == data.content[index].place_id) {
+						data.content[index].formatted_address = detail.formatted_address;
+						data.content[index].formatted_phone_number = detail.formatted_phone_number;
+						if (detail.url != null) {
+							data.content[index].linkDetail = detail.url;
+						}				
+						data.content[index].opening_hours = detail.opening_hours;
+						data.content[index].price_level = detail.price_level;
+						data.content[index].rating = detail.rating;
+						data.content[index].ok = true;
+					}
+					
+					bodyData.content.push(data.content[index]);
+					
+					var html = Mustache.render(template, bodyData);
+				
+					$("#collapse_${instanceId}" + index).html(html);			
+
+					hideAllCollapse();
+					
+					$("#collapse_${instanceId}" + index).collapse("show");
 				  }
 				});
+		} else {
+			hideAllCollapse();
+			$("#collapse_${instanceId}" + index).collapse("show");
 		}
 	  };
 	  
-	  var updateData = function() {
-	  
-	    var detail = null;
-	   
-		for (var i=0; i<data.content.length; i++) {
-			detail = getDetail(data.content[i].place_id);
-			console.log(detail);
-			if (detail != null) {
-				data.content[i].formatted_address = detail.formatted_address;
-				data.content[i].formatted_phone_number = detail.formatted_phone_number;
-				if (detail.url != null) {
-					data.content[i].linkDetail = detail.url;
-				}				
-				data.content[i].opening_hours = detail.opening_hours;
-				data.content[i].price_level = detail.price_level;
-				data.content[i].rating = detail.rating;
-			}
-		}
+	  var hideAllCollapse = function() {
 		
-		renderizarMenos();
-	  };
-	  
-	  var getDetail = function(place_id) {
-		for (var i=0; i<details.length; i++) {
-			if (details[i].place_id = place_id) {
-				return details[i];
+		if (data.content != null && data.content.length > 0) {
+		
+			var collapse = null;
+		
+			for (var i=0; i<data.content.length; i++) {
+				try {
+					$("#collapse_${instanceId}" + i).collapse("hide");
+				} catch(e) {
+				
+				}
 			}
-		}		
-		return null;
+		}
 	  };
 	  
 	  var renderizarMenos = function() {
+	  
 		var template = $("#templateAccordion_${instanceId}").html();
 
 		var minData = {
@@ -319,11 +327,14 @@
 		$("#btnRecolher_${instanceId}").hide();
 		
 		$("#accordion_${instanceId}").html(html);
+		$("#accordion_${instanceId}").hide();
+		hideAllCollapse();
+		$("#accordion_${instanceId}").show();
 		
 		try {
-			document.getElementById("place_${instanceId}0").click();
+			setTimeout(function(){ viewRestaurant(currentIndex); }, 500);
 		} catch(e) {
-		
+			console.log("renderizarMenos: " + e.message);
 		}		
 	  };
 	  
@@ -336,6 +347,15 @@
 		$("#btnCarregarMais_${instanceId}").hide();
 	
 		$("#accordion_${instanceId}").html(html);
+		$("#accordion_${instanceId}").hide();
+		hideAllCollapse();
+		$("#accordion_${instanceId}").show();
+		
+		try {
+			setTimeout(function(){ viewRestaurant(currentIndex); }, 500);
+		} catch(e) {
+			console.log("renderizarMenos: " + e.message);
+		}	
 	  };
 	
 </script>

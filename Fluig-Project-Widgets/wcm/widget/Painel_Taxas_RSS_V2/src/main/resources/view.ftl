@@ -5,7 +5,7 @@
 		
 		<h2 class="page-header"> 
     	<span class="fluigicon fluigicon-rss"></span>
-	        Painel de Taxas RSS
+	        Painel de Taxas RSS<div id="divDataHora_${instanceId}"> </div>
 	    </h2>
 		
 		<div id="painel_${instanceId}">
@@ -421,6 +421,10 @@
 		
     	$("#painel_${instanceId}").append(html);
 	};
+	
+	var dataHora = " (" + FLUIGC.calendar.formatDateTimeZone(new Date()) + ")";
+	
+	$("#divDataHora_${instanceId}").html(dataHora);
 	
 	atualizarSelic();
 	

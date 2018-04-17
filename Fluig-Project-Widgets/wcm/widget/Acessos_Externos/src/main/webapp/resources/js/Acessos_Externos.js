@@ -33,8 +33,6 @@ var AcessosExternos = SuperWidget.extend({
     		"/webdesk/streamcontrol/padrao.png?WDCompanyId=" + companyid +
     		"&WDNrDocto=" + documentid + "&WDNrVersao=" + version;
     		
-    	console.log(imageUrl);
-    	
     	return imageUrl;
     },
     
@@ -50,13 +48,9 @@ var AcessosExternos = SuperWidget.extend({
 				
 		var dataset = DatasetFactory.getDataset("ds_acessos_externos", fields, constraints, sortingFields);
 		
-		console.log("dataset: " + dataset.values.length);
-		
 		if (dataset != null && dataset.values != null && dataset.values.length > 0) {
 			data.content = dataset.values;
 		}
-		
-		console.log(data);
 		
 		return data;
 	},    

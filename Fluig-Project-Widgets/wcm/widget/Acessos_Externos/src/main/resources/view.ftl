@@ -22,7 +22,7 @@
 			</h3>
 			<p>
 				<a href="{{url}}" target="_blank">
-					<img src="{{imageUrl}}">
+					<img src="{{imageUrl}}" style="max-width: 120px;">
 				</a>
 			</p>
 		</div>
