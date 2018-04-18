@@ -101,7 +101,9 @@
 			</div>			
 			<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>		
 				<span>
-					{{formatted_phone_number}}
+					<a href="tel://{{formatted_phone_number}}">
+						{{formatted_phone_number}}
+					</a>
 					<br/><br/>
 					{{formatted_address}}		
 				</span>
