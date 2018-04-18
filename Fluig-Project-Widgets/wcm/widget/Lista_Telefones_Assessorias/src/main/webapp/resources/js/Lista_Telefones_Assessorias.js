@@ -33,7 +33,7 @@ var ListaTelefonesAssessorias = SuperWidget.extend({
 	strToLinkTel: function(str) {
 		var isNumeric = /^[-+]?(\d+|\d+\.\d*|\d*\.\d+)$/;
 
-		var newStr = 'tel:+55';
+		var newStr = 'tel://+55';
 		
 		for (var i=0; i<str.length; i++) {
 			if (isNumeric.test(str[i])) {
