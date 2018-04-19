@@ -1,0 +1,172 @@
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide-filter.min.css">
+
+	<link href="Calendario.css" type="text/css" rel="stylesheet" />
+
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+
+	<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	<script src="/portal/resources/style-guide/js/fluig-style-guide-filter.min.js"></script>
+	
+	<script src="input-mask/jquery.inputmask.bundle.js"></script>
+	<script src="mask/jquery.mask.min.js"></script>
+
+	<script src="Calendario.js"></script>
+</head>
+<body class="fluig-style-guide background">
+	<form role="form" name="Calendarioform" id="Calendarioform">
+		
+		<input type="hidden" id="ds_descriptor" name="ds_descriptor" />
+		
+		<div class="container-fluid">
+
+			<div class="row">				
+
+				<div class="col-md-3 col-sm-4 col-xs-12">
+					<div class="form-group fs-cursor-pointer" id="dt_event">
+						<label>i18n.translate("calendario.form.dt_event")</label>
+						<span class="required text-danger"><strong>*</strong></span>
+						<div class="input-group date">
+							<input class="form-control" name="dt_event" type="text" mask="00/00/0000" />
+
+							<span class="input-group-addon"> <span
+								class="fluigicon fluigicon-calendar"></span>
+							</span>
+						</div>
+					</div>					
+				</div>
+				
+				<div class="col-md-3 col-sm-4 col-xs-12">
+					<div class="form-group" id="div_nm_dia_semana">
+						<label>i18n.translate("calendario.form.diasemana")</label>
+						<div class="input-group">
+							<input class="form-control" name="nm_dia_semana" id="nm_dia_semana" type="text" readonly="readonly"/>
+						</div>
+					</div>					
+				</div>
+				
+			</div>
+
+			<div class="row">
+				<div style="display: block" id="divEventos">
+
+					<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tableDetail">
+						<table tablename="tbeventos" cellspacing="0" id="tbeventos" noaddbutton=true
+								deleteicon="Calendario4.png" style="display: none" class="table">
+							<thead>
+								<tr class="tableHeadRow">
+									<th class="tableColumn">i18n.translate("calendario.form.nm_evento")
+										<span class="required text-danger"><strong>*</strong></span>
+									</th>
+									<th class="tableColumn">i18n.translate("calendario.form.hr_inicio")
+										<span class="required text-danger"><strong>*</strong></span>
+									</th>
+									<th class="tableColumn">i18n.translate("calendario.form.hr_termino")
+										
+									</th>
+									<th>
+										&nbsp;
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="col-md-4 col-sm-6">
+										<div class="form-group">
+											<input type="text" name="nm_evento" class="form-control" maxlength="40" />
+										</div>
+									</td>
+									
+									<td class="col-md-2 col-sm-2">
+										<div class="form-group fs-cursor-pointer">
+											<div class="input-group date">
+												<input class="form-control" name="hr_inicio" type="text" maxlength="15" mask="00:00" onfocus="addCalendarTime(this);" />
+					
+												<span class="input-group-addon"> <span
+													class="fluigicon fluigicon-time"></span>
+												</span>
+											</div>
+										</div>
+									</td>
+									
+									<td class="col-md-2 col-sm-2">
+										<div class="form-group fs-cursor-pointer">
+											<div class="input-group date">
+												<input class="form-control" name="hr_termino" type="text" maxlength="15" mask="00:00" onfocus="addCalendarTime(this);" />
+					
+												<span class="input-group-addon"> <span
+													class="fluigicon fluigicon-time"></span>
+												</span>
+											</div>
+										</div>
+									</td>
+									
+									<td class="col-md-4 col-sm-4">
+										&nbsp;
+									</td>			
+									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<button type="button" class="btn btn-primary" data-toggle="button" id="btnAddEvento"
+						onclick="addEvento()">i18n.translate("calendario.form.Addevento")</button>
+				</div>
+				
+			</div>
+			
+		</div>
+	</form>
+
+	<script type="text/javascript">
+		function addEvento() {
+
+			$('#tbeventos').show();
+
+			var row = wdkAddChild('tbeventos');
+			
+			FLUIGC.calendar("#hr_inicio___" + row, {
+				pickDate: false,
+			    pickTime: true
+			});
+			
+			FLUIGC.calendar("#hr_termino___" + row, {
+				pickDate: false,
+			    pickTime: true
+			});
+		}
+		
+		function addCalendarTime(elem) {
+			FLUIGC.calendar(elem, {
+				pickDate: false,
+			    pickTime: true
+			});
+		}
+		
+		function addMaskDecimalToVrEscob(elem) {
+			$(elem).inputmask("decimal", {
+			    colorMask: false
+			});
+		}
+		
+		function hideButtonAddEvento() {
+			$( "btnAddEvento" ).hide();
+		}
+		
+		function showButtonAddEvento() {
+			$( "btnAddEvento" ).show();
+		}
+	</script>
+
+</body>
+</html>
