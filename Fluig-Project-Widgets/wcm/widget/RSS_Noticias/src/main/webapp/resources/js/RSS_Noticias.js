@@ -30,9 +30,11 @@ var RSSNoticias = SuperWidget.extend({
 		
 		$("#divHeaderDataHora_" + vInstanceId).html(dataHora);
 		
+		var api_key = 'mxz0eeqjpkndgqlmka9beq2mi3d3z4ozosnghqov';
+		
 		$.ajax({
 		  type: 'GET',
-		  url: "https://api.rss2json.com/v1/api.json?rss_url=" + url,
+		  url: "https://api.rss2json.com/v1/api.json?rss_url=" + url + '&api_key=' + api_key,
 		  dataType: 'jsonp',
 		  success: function(result) {
 			

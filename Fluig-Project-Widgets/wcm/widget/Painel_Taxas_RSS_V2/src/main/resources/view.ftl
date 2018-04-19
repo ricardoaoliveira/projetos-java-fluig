@@ -248,10 +248,12 @@
 	var showObjectTaxas = false;
 	var showObjectData = false;
 	
+	var api_key = 'mxz0eeqjpkndgqlmka9beq2mi3d3z4ozosnghqov';
+					
 	var atualizarSelic = function() {
 		$.ajax({
 		  type: 'GET',
-		  url: "https://api.rss2json.com/v1/api.json?rss_url=" + urlSelic,
+		  url: "https://api.rss2json.com/v1/api.json?rss_url=" + urlSelic + '&api_key=' + api_key,
 		  dataType: 'jsonp',
 		  success: function(result) {
 			
@@ -289,7 +291,7 @@
 	var atualizarPoupanca = function() {
 		$.ajax({
 		  type: 'GET',
-		  url: "https://api.rss2json.com/v1/api.json?rss_url=" + urlPoupanca,
+		  url: "https://api.rss2json.com/v1/api.json?rss_url=" + urlPoupanca + '&api_key=' + api_key,
 		  dataType: 'jsonp',
 		  success: function(result) {
 			
@@ -322,7 +324,7 @@
 	var atualizarInflacao = function() {
 		$.ajax({
 		  type: 'GET',
-		  url: "https://api.rss2json.com/v1/api.json?rss_url=" + urlInflacao,
+		  url: "https://api.rss2json.com/v1/api.json?rss_url=" + urlInflacao + '&api_key=' + api_key,
 		  dataType: 'jsonp',
 		  success: function(result) {
 			
@@ -360,7 +362,7 @@
 	var atualizarCambio = function() {
 		$.ajax({
 		  type: 'GET',
-		  url: "https://api.rss2json.com/v1/api.json?rss_url=" + urlCambio,
+		  url: "https://api.rss2json.com/v1/api.json?rss_url=" + urlCambio + '&api_key=' + api_key,
 		  dataType: 'jsonp',
 		  success: function(result) {
 			
