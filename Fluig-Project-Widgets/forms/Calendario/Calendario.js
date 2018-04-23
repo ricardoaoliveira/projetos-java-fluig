@@ -11,6 +11,8 @@ var updateDiaSemana = function() {
 		var mes = parseInt(dtEventoValues[1]);
 		var ano = parseInt(dtEventoValues[2]);
 		
+		$("#dt_event_fmt").val(dtEventoValues[2] + "-" + dtEventoValues[1] + "-" + dtEventoValues[0]);
+		
 		var dayName = new Array ("Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado");
 		var now = new Date();
 		now.setYear(ano);

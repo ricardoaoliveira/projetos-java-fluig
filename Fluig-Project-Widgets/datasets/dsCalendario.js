@@ -12,22 +12,25 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("id");
     dataset.addColumn("ds_descriptor");
     dataset.addColumn("dt_event");
+    dataset.addColumn("dt_event_fmt");
     dataset.addColumn("nm_dia_semana");
     dataset.addColumn("nm_evento");
     dataset.addColumn("hr_inicio");
     dataset.addColumn("hr_termino");
+    dataset.addColumn("url");
      
     //Cria a constraint para buscar os formulários ativos
     var cst = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
     var constraints = new Array(cst);
      
     var datasetPrincipal = DatasetFactory.getDataset("ds_calendario", null, constraints, null);
-     
+    
     for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
         var documentId = datasetPrincipal.getValue(i, "metadata#id");
         var documentVersion = datasetPrincipal.getValue(i, "metadata#version");
         var ds_descriptor = datasetPrincipal.getValue(i, "ds_descriptor");
         var dt_event = datasetPrincipal.getValue(i, "dt_event");
+        var dt_event_fmt = datasetPrincipal.getValue(i, "dt_event_fmt");
         var nm_dia_semana = datasetPrincipal.getValue(i, "nm_dia_semana");
                  
         //Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
@@ -45,10 +48,13 @@ function createDataset(fields, constraints, sortFields) {
                     documentId,
                     ds_descriptor,
                     dt_event,
+                    dt_event_fmt,
                     nm_dia_semana,
                     datasetFilhos.getValue(j, "nm_evento"),
                     datasetFilhos.getValue(j, "hr_inicio"), 
-                    datasetFilhos.getValue(j, "hr_termino")));
+                    datasetFilhos.getValue(j, "hr_termino"),
+                    datasetFilhos.getValue(j, "url")
+            ));
         }
     }
      

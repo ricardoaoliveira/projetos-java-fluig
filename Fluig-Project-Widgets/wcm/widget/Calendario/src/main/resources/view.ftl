@@ -9,7 +9,7 @@
     </div>
 
 
-<div id='calendario_top' style="display:block">
+<div id='calendario_top' style="display:none">
 
     <div class='calendario_left'>
 
@@ -133,88 +133,70 @@
 
 </div>
 
+<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+
 <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
 
 <script>
 
 $(document).ready(function() {
 
-	var eventos = [
-		{
-              title: 'All Day Event',
-              start: '2018-03-01'
-            },
-            {
-              title: 'Long Event',
-              start: '2018-03-07',
-              end: '2018-03-10'
-            },
-            {
-              id: 999,
-              title: 'Repeating Event',
-              start: '2018-03-09T16:00:00'
-            },
-            {
-              id: 999,
-              title: 'Repeating Event',
-              start: '2018-03-16T16:00:00'
-            },
-            {
-              title: 'Conference',
-              start: '2018-03-11',
-              end: '2018-03-13'
-            },
-            {
-              title: 'Meeting',
-              start: '2018-03-12T10:30:00',
-              end: '2018-03-12T12:30:00'
-            },
-            {
-              title: 'Lunch',
-              start: '2018-03-12T12:00:00'
-            },
-            {
-              title: 'Meeting',
-              start: '2018-03-12T14:30:00'
-            },
-            {
-              title: 'Happy Hour',
-              start: '2018-03-12T17:30:00'
-            },
-            {
-              title: 'Dinner',
-              start: '2018-03-12T20:00:00'
-            },
-            {
-              title: 'Birthday Party',
-              start: '2018-03-13T07:00:00'
-            },
-            {
-              title: 'Click for Google',
-              url: 'http://google.com/',
-              start: '2018-03-28'
-            },
-			{
-			  title: 'MGW',
-			  url: 'http://www.mgwativos.com.br',
-			  start: '2018-04-18T08:00:00',
-			  end: '2018-04-18T12:00:00',
-			}
-	  ];
-  
-    
+    var eventos = [];
+
+	var dataset = DatasetFactory.getDataset("dsCalendario");
+	if (dataset != null && dataset.values.length > 0) {
+		
+		var calendario = dataset.values[0];
+		var dataEvento = calendario.dt_event_fmt;
+		var horaInicio = calendario.hr_inicio;
+		var horaTermino = calendario.hr_termino;
+		var titulo = calendario.nm_evento;
+		var url = calendario.url;
+		
+		var evento = new Object();
+		evento.title = titulo;
+		evento.start = dataEvento + "T" + horaInicio;
+		
+		if (horaTermino != null && horaTermino.length > 0) {
+			evento.end = dataEvento + "T" + horaTermino;
+		}
+		
+		if (url != null && url.length > 0) {
+			evento.url = url;
+		}
+		
+		eventos.push(evento);
+	}
+
+	var dataAtual = new Date();
+	var ano = dataAtual.getFullYear();	
+    var mes = parseInt(dataAtual.getMonth() + 1);
+	var dia = parseInt(dataAtual.getDate());
+		
+	if (mes < 10) {
+		mes = "0" + mes;
+	}
+		
+	if (dia < 10) {
+	   dia = "0" + dia;
+	}
+		
+	var dataInicial = ano + "-" + mes + "-" + dia;
 
     initThemeChooser({
-	
+	  
       init: function(themeSystem) {
         $('#calendar').fullCalendar({
-          themeSystem: themeSystem,
+          theme: true,
+          themeSystem: "standard",
+          //themeSystem: themeSystem,
           header: {
             left: 'prev,next today',
             center: 'title',
             right: 'month,agendaWeek,agendaDay,listMonth'
           },
-          defaultDate: '2018-03-12',
+          defaultDate: dataInicial,
 		  locale: 'pt-br',
           weekNumbers: true,
           navLinks: true, // can click day/week names to navigate views

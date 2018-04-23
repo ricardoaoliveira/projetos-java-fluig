@@ -26,6 +26,7 @@
 	<form role="form" name="Calendarioform" id="Calendarioform">
 		
 		<input type="hidden" id="ds_descriptor" name="ds_descriptor" />
+		<input type="hidden" id="dt_event_fmt" name="dt_event_fmt" />
 		
 		<div class="container-fluid">
 
@@ -73,14 +74,14 @@
 									<th class="tableColumn">i18n.translate("calendario.form.hr_termino")
 										
 									</th>
-									<th>
-										&nbsp;
+									<th class="tableColumn">i18n.translate("calendario.form.url")
+										
 									</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td class="col-md-4 col-sm-6">
+									<td class="col-md-4 col-sm-4">
 										<div class="form-group">
 											<input type="text" name="nm_evento" class="form-control" maxlength="40" />
 										</div>
@@ -110,9 +111,11 @@
 										</div>
 									</td>
 									
-									<td class="col-md-4 col-sm-4">
-										&nbsp;
-									</td>			
+									<td class="col-md-2 col-sm-4">
+										<div class="form-group">
+											<input class="form-control" name="url" type="text" maxlength="100" />
+										</div>
+									</td>
 									
 								</tr>
 							</tbody>
