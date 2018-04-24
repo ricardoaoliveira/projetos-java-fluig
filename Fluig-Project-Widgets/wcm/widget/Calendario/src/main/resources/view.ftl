@@ -147,26 +147,28 @@ $(document).ready(function() {
 	var dataset = DatasetFactory.getDataset("dsCalendario");
 	if (dataset != null && dataset.values.length > 0) {
 		
-		var calendario = dataset.values[0];
-		var dataEvento = calendario.dt_event_fmt;
-		var horaInicio = calendario.hr_inicio;
-		var horaTermino = calendario.hr_termino;
-		var titulo = calendario.nm_evento;
-		var url = calendario.url;
-		
-		var evento = new Object();
-		evento.title = titulo;
-		evento.start = dataEvento + "T" + horaInicio;
-		
-		if (horaTermino != null && horaTermino.length > 0) {
-			evento.end = dataEvento + "T" + horaTermino;
+		for (var i=0; i<dataset.values.length; i++) {
+			var calendario = dataset.values[i];
+			var dataEvento = calendario.dt_event_fmt;
+			var horaInicio = calendario.hr_inicio;
+			var horaTermino = calendario.hr_termino;
+			var titulo = calendario.nm_evento;
+			var url = calendario.url;
+			
+			var evento = new Object();
+			evento.title = titulo;
+			evento.start = dataEvento + "T" + horaInicio;
+			
+			if (horaTermino != null && horaTermino.length > 0) {
+				evento.end = dataEvento + "T" + horaTermino;
+			}
+			
+			if (url != null && url.length > 0) {
+				evento.url = url;
+			}
+			
+			eventos.push(evento);
 		}
-		
-		if (url != null && url.length > 0) {
-			evento.url = url;
-		}
-		
-		eventos.push(evento);
 	}
 
 	var dataAtual = new Date();

@@ -10,7 +10,7 @@ var SlideShow = SuperWidget.extend({
 	showImageTitle: null,
 	autoSize: false,
 	resize: false,
-	interval: null,
+	interval: 5000,
 	mapAttrs: {
 		TYPE_INSTAGRAM: 'Instagram',
 		TYPE_FLUIGDIR: 'FluigDir',
@@ -59,7 +59,7 @@ var SlideShow = SuperWidget.extend({
 		this.showImageTitle = $('#showImageTitle' + mode).prop('checked');
 		this.autoSize = $("#autoSize" + mode).prop('checked');
 		this.resize = $("#resize" + mode).prop('checked');
-		this.interval = 1500;
+		//this.interval = parseInt( $("#interval" + mode) );
 	},
 
 	getMode: function () {

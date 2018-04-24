@@ -148,7 +148,8 @@ var SlideShow = SuperWidget.extend({
 				id: 'kitIntranetSlideshow' + this.instanceId,
 				images: images,
 				autoSize: this.autoSize,
-				resize: this.resize
+				resize: this.resize,
+				interval: 10000
 			};
 			FLUIGC.carousel(photoList, settings);
 		} else {
