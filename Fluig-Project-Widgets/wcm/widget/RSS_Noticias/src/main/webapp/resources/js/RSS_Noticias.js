@@ -1,10 +1,22 @@
 var RSSNoticias = SuperWidget.extend({
     
+	bindings: {
+		local: {
+			'recolher': ['click_recolher'],
+			'mostrar-mais': ['click_mostrarMais']
+		},
+		global: {}
+	},
+	
     init: function() {
         console.log("init: " + this.instanceId);
     	this.searchRSS(this.instanceId);
     },
-  
+    
+	minShow: 3,
+    
+    result: new Array(),
+    
   	searchRSS: function(vInstanceId) {
   		var data = {
 			content: []
@@ -36,21 +48,60 @@ var RSSNoticias = SuperWidget.extend({
 		  type: 'GET',
 		  url: "https://api.rss2json.com/v1/api.json?rss_url=" + url + '&api_key=' + api_key,
 		  dataType: 'jsonp',
-		  success: function(result) {
-			
-			console.log(result);
+		  success: function(resp) {
+			result = resp;
 			
 			var template = '';
-		
+			
 			for (var i=0; i<result.items.length; i++) {
-				data.content[i] = new Object();
-				data.content[i].title = result.items[i].title;			
-				data.content[i].content = result.items[i].content;			
-				data.content[i].description = result.items[i].description;		
-				data.content[i].link = result.items[i].link;			
-				data.content[i].thumbnail = result.items[i].thumbnail;					
-				data.content[i].collapseIndice = i;
-				
+
+				if (i < 3) {
+					template += "<div class='panel panel-default'>";
+					template += 		"<div class='panel-heading'>";
+					template += 			"<h4 class='panel-title'>";
+					template += 				"<a class='collapse-icon up' data-toggle='collapse' data-parent='#accordion_" + vInstanceId + "' href='#collapse" + i + "'>";
+					template += 				result.items[i].title;
+					template += 			"</h4>";
+					template += 		"</div>";
+					template += 	"<div id='collapse" + i + "' class='panel-collapse collapse'>";
+					template += 		"<div class='panel-body'>";
+					template +=					"<div class='row'>"			
+					template += 					"<div class='col-md-12'>"
+					template += 						"<a href='" + result.items[i].link + "' target='_blank'>" + result.items[i].content + "</a>";
+					template += 					"</div>"
+					template +=					"</div>"			
+					template += 		"</div>";
+					template += 	"</div>";
+					template += "</div>";	
+				}
+			}
+			
+			try {
+	    		$("#accordion_" + vInstanceId).html(template);
+	    	} catch(e) {
+	    		console.log("erro accordion: " + e.message);
+	    	}	    	
+			
+			$('#collapse').collapse({
+				toggle: false
+			});
+			
+			$('#btnCarregarMais_' + vInstanceId).show();
+			$('#btnRecolher_' + vInstanceId).hide();
+		  }
+		});
+  	},
+  	
+  	recolher: function() {
+  		console.log(result);
+		
+  		var vInstanceId = this.instanceId;
+  		
+		var template = '';
+	
+		for (var i=0; i<result.items.length; i++) {
+
+			if (i < this.minShow) {
 				template += "<div class='panel panel-default'>";
 				template += 		"<div class='panel-heading'>";
 				template += 			"<h4 class='panel-title'>";
@@ -67,20 +118,64 @@ var RSSNoticias = SuperWidget.extend({
 				template +=					"</div>"			
 				template += 		"</div>";
 				template += 	"</div>";
-				template += "</div>";
+				template += "</div>";	
 			}
-			
-			try {
-	    		$("#accordion_" + vInstanceId).append(template);
-	    	} catch(e) {
-	    		console.log("erro accordion: " + e.message);
-	    	}	    	
-			
-			$('#collapse').collapse({
-				toggle: false
-			});
-		  }
+		}
+		
+		try {
+    		$("#accordion_" + vInstanceId).html(template);
+    	} catch(e) {
+    		console.log("erro accordion: " + e.message);
+    	}	    	
+		
+		$('#collapse').collapse({
+			toggle: false
 		});
+		
+		$('#btnCarregarMais_' + this.instanceId).show();
+		$('#btnRecolher_' + vInstanceId).hide();		
+  	},
+  	
+  	mostrarMais: function() {
+  		console.log(result);
+		
+  		var vInstanceId = this.instanceId;
+  		
+		var template = '';
+	
+		for (var i=0; i<result.items.length; i++) {
+
+			template += "<div class='panel panel-default'>";
+			template += 		"<div class='panel-heading'>";
+			template += 			"<h4 class='panel-title'>";
+			template += 				"<a class='collapse-icon up' data-toggle='collapse' data-parent='#accordion_" + vInstanceId + "' href='#collapse" + i + "'>";
+			template += 				result.items[i].title;
+			template += 			"</h4>";
+			template += 		"</div>";
+			template += 	"<div id='collapse" + i + "' class='panel-collapse collapse'>";
+			template += 		"<div class='panel-body'>";
+			template +=					"<div class='row'>"			
+			template += 					"<div class='col-md-12'>"
+			template += 						"<a href='" + result.items[i].link + "' target='_blank'>" + result.items[i].content + "</a>";
+			template += 					"</div>"
+			template +=					"</div>"			
+			template += 		"</div>";
+			template += 	"</div>";
+			template += "</div>";	
+		}
+		
+		try {
+    		$("#accordion_" + vInstanceId).html(template);
+    	} catch(e) {
+    		console.log("erro accordion: " + e.message);
+    	}	    	
+		
+		$('#collapse').collapse({
+			toggle: false
+		});
+		
+		$('#btnCarregarMais_' + vInstanceId).hide();
+		$('#btnRecolher_' + vInstanceId).show();
   	},
   	
   	searchData: function() {

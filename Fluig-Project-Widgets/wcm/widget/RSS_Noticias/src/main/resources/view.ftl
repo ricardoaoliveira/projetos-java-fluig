@@ -18,6 +18,22 @@
 			</div>
 		</div>
 		
+		<div class="row">
+			<div class="col-md-12">
+				<button class="btn btn-default btn-block" id="btnCarregarMais_${instanceId}" data-mostrar-mais>
+					Carregar mais
+				</button>
+			</div>			
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">			
+				<button class="btn btn-default btn-block" id="btnRecolher_${instanceId}" data-recolher>
+					Recolher
+				</button>
+			</div>
+		</div>
+		
     </div>
 
 </div>

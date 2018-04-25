@@ -1,7 +1,7 @@
 <div id="AcessosExternos_${instanceId}" class="super-widget wcm-widget-class fluig-style-guide" 
 	data-params="AcessosExternos.instance()">
 
-	<h2 class="page-header"><span class="fluigicon fluigicon-cloud"></span> Acessos Externos</h2>
+	<h2 class="page-header"><span class="fluigicon fluigicon-cloud"></span> Sistemas Corporativos</h2>
 	
 	<div id="container_${instanceId}">
 		
