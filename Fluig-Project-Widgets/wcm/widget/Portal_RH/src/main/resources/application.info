@@ -1,0 +1,16 @@
+application.type=widget
+application.code=Portal_RH
+application.title=Portal RH
+application.description=Portal RH
+application.category=SYSTEM
+application.renderer=freemarker
+application.resource.css.1=/resources/css/Portal_RH.css
+application.resource.js.1=/resources/js/Portal_RH.js
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+
