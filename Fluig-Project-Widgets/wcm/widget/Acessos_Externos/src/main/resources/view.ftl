@@ -13,31 +13,22 @@
 
 <script id="template_${instanceId}" type="text/template">
 	{{#content}}	
-		{{#insertRow}}
-			{{#isFirst}}
-				<div class="row">
-			{{/isFirst}}
-			{{^isFirst}}
-				</div>
-				<div class="row">
-			{{/isFirst}}
-		{{/insertRow}}
-		
-		<div class="col-md-6"> 
+	<div class="row">
+		<div class="col-md-12">
 			<h3>
 				<a href="{{url}}" target="_blank">{{titulo}}</a>
 			</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
 			<p>
 				<a href="{{url}}" target="_blank">
-					<img src="{{imageUrl}}">
-				</a>
+					<img src="{{imageUrl}}" style="width: 100px; height: 100px;">		
+					{{descricao}}								
+				</a>							
 			</p>
 		</div>
-		
-		{{#insertRow}}
-			{{#isLast}}
-				</div>
-			{{/isLast}}
-		{{/insertRow}}
+	</div>
 	{{/content}}
 </script>

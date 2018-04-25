@@ -11,22 +11,25 @@
 
 <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
 
-<script id="template_${instanceId}" type="text/template">
+<script id="template_${instanceId}" type="text/template">	
 	{{#content}}	
-		<div class="col-md-4"> 
+	<div class="row">
+		<div class="col-md-12">
 			<h3>
-				<center>
-					<a onclick="openWidget('{{titulo}}', '{{codigo}}')">{{titulo}}</a>
-				</center>
+				<a onclick="openWidget('{{titulo}}', '{{codigo}}')">{{titulo}}</a>
 			</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
 			<p>
 				<a onclick="openWidget('{{titulo}}', '{{codigo}}')">
-					<center>
-						<img src="{{imageUrl}}" style="width: 100px; height: 100px;">
-					</center>					
+					<img src="{{imageUrl}}" style="width: 100px; height: 100px;">
+					{{descricao}}
 				</a>
 			</p>
 		</div>
+	</div>
 	{{/content}}
 </script>
 

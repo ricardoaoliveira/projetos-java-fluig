@@ -8,9 +8,10 @@
 		<h2 class="page-header"> 
     	<span class="fluigicon fluigicon-food"></span>
     		<span id="divHeader_${instanceId}">
-    			Restaurantes
-    		</span>
+    			Restaurantes    			
+    		</span>    		
 	    </h2>
+	    <p>Escolha onde almoçará</p>
 		
 		<div class="row">
 			<div class="col-md-12">

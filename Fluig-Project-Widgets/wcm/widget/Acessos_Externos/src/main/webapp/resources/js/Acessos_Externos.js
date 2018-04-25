@@ -18,15 +18,15 @@ var AcessosExternos = SuperWidget.extend({
     							data.content[i].version);
     		}
     		
-    		if (data.content.length % 2 !==0) {
+    		/*if (data.content.length % 2 !==0) {
     			data.content.push({
     				nome: '',
     				url: '',
     				imageUrl: ''
     			});
-    		}
+    		}*/
     		
-    		var lastIndex = data.content.length;
+    		/*var lastIndex = data.content.length;
     		
     		for (var i=0; i<data.content.length; i++) {
     			data.content[i].index = i;
@@ -43,7 +43,7 @@ var AcessosExternos = SuperWidget.extend({
     					return false;
     				}
     			};
-    		}
+    		}*/
     		
     		try {
     			var html = Mustache.render(template, data);
@@ -70,7 +70,7 @@ var AcessosExternos = SuperWidget.extend({
 		
 		var constraints = new Array();
 		
-		var fields = new Array("id", "companyid", "titulo", "url", "version");
+		var fields = new Array("id", "companyid", "titulo", "descricao", "url", "version");
 		var sortingFields = new Array();
 				
 		var dataset = DatasetFactory.getDataset("ds_acessos_externos", fields, constraints, sortingFields);

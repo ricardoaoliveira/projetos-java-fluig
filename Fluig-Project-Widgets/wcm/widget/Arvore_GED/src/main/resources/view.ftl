@@ -4,7 +4,7 @@
 	<div class="fluig-style-guide">
 	    <h2 class="page-header"> 
 	    	<span class="fluigicon fluigicon-folder-open"></span>
-	        GED
+	        GED - Central de Documentos
 	    </h2>
     </div>
 

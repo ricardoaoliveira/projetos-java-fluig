@@ -16,35 +16,6 @@ var GrupoWidgetsTelefone = SuperWidget.extend({
     				this.getImageUrl(data.content[i].companyid, 
     							data.content[i].documentid, 
     							data.content[i].version);
-    			
-    		}
-    		
-    		/*if (data.content.length % 2 !==0) {
-    			
-    			data.content.push({
-    				titulo: '',
-    				codigo: '',
-    				imageUrl: ''
-    			});
-    		}*/
-    		
-    		var lastIndex = data.content.length;
-    		
-    		for (var i=0; i<data.content.length; i++) {
-    			data.content[i].index = i;
-    			data.content[i].isFirst = function() {
-    				return this.index == 0;
-    			};
-    			data.content[i].isLast = function() {
-    				return this.index == lastIndex;
-    			};
-    			data.content[i].insertRow = function() {
-    				if (this.index % 2 === 0) {
-    					return true;
-    				} else {
-    					return false;
-    				}
-    			};
     		}
     		
     		try {
@@ -72,7 +43,7 @@ var GrupoWidgetsTelefone = SuperWidget.extend({
 		
 		var constraints = new Array();
 		
-		var fields = new Array("id", "companyid", "titulo", "codigo", "version");
+		var fields = new Array("id", "companyid", "titulo", "codigo", "descricao", "version");
 		var sortingFields = new Array();
 				
 		var dataset = DatasetFactory.getDataset("ds_grupo_widgets_telefone", fields, constraints, sortingFields);

@@ -16,7 +16,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-6">
-				<label for="nm">i18n.translate("acessos_externos.form.titulo")</label>
+				<label for="titulo">i18n.translate("acessos_externos.form.titulo")</label>
 				<span class="required text-danger"><strong>*</strong></span> 
 				<div class="input-group" style="width: 100%;">
 					<input class="form-control" id="titulo" name="titulo" type="text" onchange="updateDescriptorOnChange(this);" />
@@ -25,7 +25,16 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<label for="nm">i18n.translate("acessos_externos.form.url")</label>
+				<label for="descricao">i18n.translate("acessos_externos.form.descricao")</label>
+				<span class="required text-danger"><strong>*</strong></span> 
+				<div class="input-group" style="width: 100%;">
+					<input class="form-control" id="descricao" name="descricao" type="text" onchange="updateDescriptorOnChange(this);" />
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<label for="url">i18n.translate("acessos_externos.form.url")</label>
 				<span class="required text-danger"><strong>*</strong></span> 
 				<div class="input-group" style="width: 100%;">
 					<input class="form-control" id="url" name="url" type="text" onchange="updateDescriptorOnChange(this);" />
