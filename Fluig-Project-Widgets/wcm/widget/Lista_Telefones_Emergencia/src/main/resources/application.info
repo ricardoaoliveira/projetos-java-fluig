@@ -1,0 +1,16 @@
+application.type=widget
+application.code=Lista_Telefones_Emergencia
+application.title=Lista Telefones Emergência
+application.description=Lista Telefones Emergência
+application.category=SYSTEM
+application.renderer=freemarker
+application.resource.css.1=/resources/css/Lista_Telefones_Emergencia.css
+application.resource.js.1=/resources/js/Lista_Telefones_Emergencia.js
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+

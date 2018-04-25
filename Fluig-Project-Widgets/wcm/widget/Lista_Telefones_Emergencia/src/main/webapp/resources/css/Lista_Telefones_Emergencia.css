@@ -1,0 +1,39 @@
+.cabecalho {
+	color: white !important;
+	font-weight: bold !important;
+	font-family: 'Calibri' !important;
+}
+
+.cabecalho th {
+	background-color: Navy !important;
+	font-family: 'Calibri' !important;
+	text-align: center !important;
+}
+
+.linha_impar {
+	color: black !important;	
+	font-family: 'Calibri' !important;	
+	text-align: center !important;
+}
+
+.linha_impar td {
+	background-color: LightSteelBlue !important;
+}
+
+.linha_impar td a{
+	color: black !important; 
+}
+
+.linha_par {
+	color: white !important;	
+	font-family: 'Calibri' !important;	
+	text-align: center !important;
+}
+
+.linha_par td {
+	background-color: SteelBlue !important;
+}
+
+.linha_par td a{
+	color: white !important; 
+}

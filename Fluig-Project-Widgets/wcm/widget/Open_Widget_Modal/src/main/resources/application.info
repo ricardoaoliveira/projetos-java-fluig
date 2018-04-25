@@ -1,0 +1,15 @@
+application.type=widget
+application.code=Open_Widget_Modal
+application.title=Abrir Widget em Modal
+application.description=Abrir Widget em Modal
+application.category=SYSTEM
+application.renderer=freemarker
+application.resource.js.1=/resources/js/Open_Widget_Modal.js
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+

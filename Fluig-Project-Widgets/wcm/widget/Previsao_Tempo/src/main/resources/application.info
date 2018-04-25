@@ -1,0 +1,15 @@
+application.type=widget
+application.code=Previsao_Tempo
+application.title=Previsao do Tempo
+application.description=Previsao do Tempo
+application.category=SYSTEM
+application.renderer=freemarker
+application.resource.js.1=/resources/js/Previsao_Tempo.js
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+
