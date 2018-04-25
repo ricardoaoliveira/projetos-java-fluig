@@ -1,0 +1,16 @@
+application.type=widget
+application.code=Painel_Acesso_Portais
+application.title=Painel Acesso Portais
+application.description=Painel Acesso Portais
+application.category=SYSTEM
+application.renderer=freemarker
+application.resource.css.1=/resources/css/Painel_Acesso_Portais.css
+application.resource.js.1=/resources/js/Painel_Acesso_Portais.js
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+
