@@ -1,7 +1,7 @@
 <div id="PrevisaoTempo_${instanceId}" class="super-widget wcm-widget-class fluig-style-guide" 
 	data-params="PrevisaoTempo.instance()">
 
-		<h2 class="page-header"><span class="fluigicon fluigicon-parabolicsatellite"></span> Previsão do Tempo</h2>
+		<h2 class="page-header"><span class="fluigicon fluigicon-temperature"></span> Previsão do Tempo</h2>
 		
 		<div>
 		

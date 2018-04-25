@@ -5,7 +5,7 @@
 		
 		<h2 class="page-header"> 
     	<span class="fluigicon fluigicon-rss"></span>
-	        Painel de Taxas RSS<div id="divDataHora_${instanceId}"> </div>
+	        Painel de Taxas<div id="divDataHora_${instanceId}"> </div>
 	    </h2>
 		
 		<div id="painel_${instanceId}">

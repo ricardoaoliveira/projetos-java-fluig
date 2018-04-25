@@ -16,16 +16,18 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h3>
-				<a href="{{url}}" target="_blank">{{titulo}}</a>
+				<a href="{{url}}" target="_blank">{{titulo}}</a>				
 			</h3>
+			<p>
+				<a href="{{url}}" target="_blank">{{descricao}}</a>
+			</p>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<p>
 				<a href="{{url}}" target="_blank">
-					<img src="{{imageUrl}}" style="width: 100px; height: 100px;">		
-					{{descricao}}								
+					<img src="{{imageUrl}}">
 				</a>							
 			</p>
 		</div>
