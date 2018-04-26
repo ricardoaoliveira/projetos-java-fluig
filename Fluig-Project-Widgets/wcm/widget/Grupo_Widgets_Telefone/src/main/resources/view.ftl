@@ -24,7 +24,7 @@
 		<div class="col-md-12">
 			<p>
 				<a onclick="openWidget('{{titulo}}', '{{codigo}}')">
-					<img src="{{imageUrl}}" style="width: 100px; height: 100px;">
+					<img src="{{imageUrl}}">
 					{{descricao}}
 				</a>
 			</p>

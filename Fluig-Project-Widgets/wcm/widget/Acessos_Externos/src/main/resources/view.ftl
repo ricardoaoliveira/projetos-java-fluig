@@ -18,9 +18,6 @@
 			<h3>
 				<a href="{{url}}" target="_blank">{{titulo}}</a>				
 			</h3>
-			<p>
-				<a href="{{url}}" target="_blank">{{descricao}}</a>
-			</p>
 		</div>
 	</div>
 	<div class="row">
@@ -28,6 +25,7 @@
 			<p>
 				<a href="{{url}}" target="_blank">
 					<img src="{{imageUrl}}">
+					<a href="{{url}}" target="_blank">{{descricao}}</a>
 				</a>							
 			</p>
 		</div>
