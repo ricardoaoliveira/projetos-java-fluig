@@ -3,10 +3,10 @@
 
 <script src="/webdesk/vcXMLRPC.js" type="text/javascript"></script>
 
-<div id="widgetConvenios_${instanceId}" class="wcm-widget-class super-widget fluig-style-guide" data-params="WidgetConvenios.instance(${parameters})">
+<div id="Beneficios_${instanceId}" class="wcm-widget-class super-widget fluig-style-guide" data-params="Beneficios.instance(${parameters})">
 
 	<h2 class="page-header"> 
-    	<span class="fluigicon fluigicon-food fluigicon-md"></span>
+    	<span class="fluigicon fluigicon-user-cost"></span>
         ${i18n.getTranslation('application.title')}
     </h2>
 

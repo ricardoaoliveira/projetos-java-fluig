@@ -13,9 +13,9 @@
     <#assign parameters = '{"sourceType": "${sourceType}", "numberOfRecords": "${numberOfRecords!5}"}'?html>
 </#if>
 
-<div id="WidgetConvenios_${instanceId}"
+<div id="Beneficios_${instanceId}"
      class="super-widget wcm-widget-class fluig-style-guide"
-     data-params="WidgetConvenios.instance(${parameters})">
+     data-params="Beneficios.instance(${parameters})">
 
     <form role="form"  class="fs-sm-space">
         <div id="conveniosDataset_${instanceId}" class="form-group">

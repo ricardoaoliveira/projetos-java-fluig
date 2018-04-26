@@ -1,7 +1,7 @@
-var WidgetConvenios = SuperWidget
+var Beneficios = SuperWidget
 	.extend({
 
-		APPLICATION_CODE: 'Beneficios',
+		APPLICATION_CODE: 'dsBeneficios',
 		DEFAULT_IMAGE_PATH: '/webdesk/streamcontrol/padrao.png',
 		TENANTID_QUERYPARAM: 'WDCompanyId',
 		FORMID_QUERYPARAM: 'WDNrDocto',
