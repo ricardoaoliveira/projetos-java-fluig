@@ -1,0 +1,6 @@
+/* Coloque aqui seu codigo CSS */
+
+h2.pageTitle {
+    background-color: transparent !important;
+    color: blue;
+}
