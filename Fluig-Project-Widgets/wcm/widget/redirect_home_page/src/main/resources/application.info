@@ -8,7 +8,7 @@ developer.code=Lenovo-PC
 developer.name=Ricardo Oliveira
 developer.url=http://www.fluig.com
 application.uiwidget=true
-application.mobileapp=false
+application.mobileapp=true
 view.file=view.ftl
 edit.file=edit.ftl
 

@@ -83,10 +83,14 @@ var Treinamentos = SuperWidget
 		},
 
 		listPartners: function(limit, offset) {
-			var that = this, constraintActive = DatasetFactory.createConstraint('metadata#active', true, true,
-				ConstraintType.MUST), constraintLimit = DatasetFactory.createConstraint('sqlLimit',
-				this.numberOfRecords, this.numberOfRecords, ConstraintType.MUST), constraints = [constraintActive,
-				constraintLimit], dataset = DatasetFactory.getDataset(this.APPLICATION_CODE, null, constraints,
+			var that = this, 
+				constraintActive = DatasetFactory.createConstraint('metadata#active', true, true, ConstraintType.MUST), 
+				constraintLimit = DatasetFactory.createConstraint('sqlLimit', this.numberOfRecords, this.numberOfRecords, ConstraintType.MUST), 
+				
+				constraints = [constraintActive, constraintLimit], 
+				
+				dataset = DatasetFactory.getDataset(this.APPLICATION_CODE, null, constraints,
+						
 				['id;desc']);
 
 			if (dataset != null && dataset.values.length > 0) {
