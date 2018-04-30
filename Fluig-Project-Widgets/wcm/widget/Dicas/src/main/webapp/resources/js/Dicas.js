@@ -255,7 +255,7 @@ var Dicas = SuperWidget
 				cutContent: this.cropMessage(partner.partnerBenefits),
 				url: partner.partnerUrl,
 				hasUrl: function() {
-					return this.url != null;
+					return this.url != null && this.url != "" && this.url != "#";
 				}
 			};
 
