@@ -51,11 +51,27 @@
 		    	{{/hasUrl}}
 		    
 			    <div class="media-body">
-					<h4 class="media-heading">{{title}}</h4>
+					<h4 class="media-heading">
+						{{#hasUrl}}
+			    			<a class="pull=left" href="{{url}}" target="_blank">
+			    				{{title}}
+			    			</a>
+			    		{{/hasUrl}}
+			    		{{^hasUrl}}
+			    			{{title}}	
+			    		{{/hasUrl}}
+					</h4>
 			    </div>
 			    <p>
 			    	{{#isPartnerDetails}}
-						{{content}}
+			    		{{#hasUrl}}
+			    			<a class="pull=left" href="{{url}}" target="_blank">
+			    				{{content}}
+			    			</a>
+			    		{{/hasUrl}}
+			    		{{^hasUrl}}
+			    			{{content}}	
+			    		{{/hasUrl}}						
 					{{/isPartnerDetails}}
 					{{^isPartnerDetails}}
 						{{cutContent}}

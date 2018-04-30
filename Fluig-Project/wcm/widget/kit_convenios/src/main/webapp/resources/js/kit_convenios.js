@@ -112,7 +112,9 @@ var WidgetConvenios = SuperWidget
 					len = dataset.values.length;
 
 					if (recolher) {
-						len = 2;
+						if (len > 2) {
+							len = 2;	
+						} 					
 						$("#btnMorePartners_" + this.instanceId).show();
 						$("#btnRecolher_" + this.instanceId).hide();
 					} else {
