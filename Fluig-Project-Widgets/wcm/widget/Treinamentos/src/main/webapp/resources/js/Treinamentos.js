@@ -18,7 +18,8 @@ var Treinamentos = SuperWidget
 			local: {
 				'save-preferences': ['click_savePreferences'],
 				'more-partners': ['click_showMorePartners'],
-				'open-partner': ['click_openPartnerDetails']
+				'open-partner': ['click_openPartnerDetails'],
+				'recolher': ['click_recolher']
 			}
 		},
 
@@ -32,7 +33,7 @@ var Treinamentos = SuperWidget
 		showMorePartners: function(el, ev) {
 			var limit = this.limit, offset = this.offset;
 
-			this.listPartners(limit, offset);
+			this.listPartners(limit, offset, false);
 		},
 
 		openPartnerDetails: function(el, ev) {
@@ -61,7 +62,7 @@ var Treinamentos = SuperWidget
 
 				if (!that.isEditMode) {
 					that.startLoadingAnimation();
-					that.listPartners(limit, offset);
+					that.listPartners(limit, offset, true);
 				} else {
 					that.setupFormLink();
 				}
@@ -82,15 +83,17 @@ var Treinamentos = SuperWidget
 			animation.hide();
 		},
 
-		listPartners: function(limit, offset) {
-			var that = this, 
-				constraintActive = DatasetFactory.createConstraint('metadata#active', true, true, ConstraintType.MUST), 
+		recolher: function() {
+			this.listPartners(this.limit, this.offset, true);
+		},
+		
+		listPartners: function(limit, offset, recolher) {
+			var that = this, constraintActive = DatasetFactory.createConstraint('metadata#active', true, true,
+				ConstraintType.MUST), 
+				
 				constraintLimit = DatasetFactory.createConstraint('sqlLimit', this.numberOfRecords, this.numberOfRecords, ConstraintType.MUST), 
-				
-				constraints = [constraintActive, constraintLimit], 
-				
+				constraints = [constraintActive], 
 				dataset = DatasetFactory.getDataset(this.APPLICATION_CODE, null, constraints,
-						
 				['id;desc']);
 
 			if (dataset != null && dataset.values.length > 0) {
@@ -105,8 +108,19 @@ var Treinamentos = SuperWidget
 					dataset.values = this.normalizeDatasetValues(dataset.values);
 
 					var len = limit + offset <= dataset.values.length ? limit + offset : dataset.values.length;
+					//Alteracao
+					len = dataset.values.length;
 
-					for (var i = offset; i < len; i++) {
+					if (recolher) {
+						len = 2;
+						$("#btnMorePartners_" + this.instanceId).show();
+						$("#btnRecolher_" + this.instanceId).hide();
+					} else {
+						$("#btnMorePartners_" + this.instanceId).hide();
+						$("#btnRecolher_" + this.instanceId).show();
+					}
+					
+					for (var i = 0; i < len; i++) {
 						if (dataset.values[i].id !== null) {
 							var item = that.getPartnerParams(dataset.values[i]);
 							that.partnersData[item.documentId] = item;
@@ -140,7 +154,7 @@ var Treinamentos = SuperWidget
 
 			this.offset += partners.length;
 
-			$('#convenios-wrapper_' + this.instanceId).append(html);
+			$('#convenios-wrapper_' + this.instanceId).html(html);
 		},
 
 		displayNoDataFoundMessage: function() {

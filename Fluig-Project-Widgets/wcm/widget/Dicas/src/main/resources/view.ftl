@@ -18,8 +18,11 @@
     <div class="row" id="convenios-wrapper_${instanceId}"></div>
 
     <div id="rowShowAll_${instanceId}" class="text-right">
-        <button type="submit" class="btn btn-default btn-block" data-more-partners>
+        <button type="submit" class="btn btn-default btn-block" data-more-partners id="btnMorePartners_${instanceId}" style="display:none;">
         	${i18n.getTranslation('kit_convenios.morepartners')}
+        </button>
+        <button type="button" class="btn btn-default btn-block" data-recolher id="btnRecolher_${instanceId}" style="display:none;">
+        	${i18n.getTranslation('kit_convenios.recolher')}
         </button>
     </div>
 
