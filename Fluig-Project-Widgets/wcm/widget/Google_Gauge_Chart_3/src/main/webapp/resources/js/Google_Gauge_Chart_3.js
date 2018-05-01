@@ -26,13 +26,15 @@ var GoogleGaugeChart3 = SuperWidget.extend({
     	
     	var isMobile = WCMAPI.isMobileAppMode();
     	
-    	if ( isMobile ) {
+    	/*if ( isMobile ) {
     		template = $("#templateMobile_" + self.instanceId).html();
     	} else {
     		template = $("#template_" + self.instanceId).html();	
-    	}
+    	}*/
 
-    	var html = Mustache.render(template, data);
+    	//var html = Mustache.render(template, data);
+    	
+    	var html = this.generateHtml(data);
     	
     	$("#containerCharts_" + self.instanceId).append(html);
     	
@@ -58,12 +60,29 @@ var GoogleGaugeChart3 = SuperWidget.extend({
     		arrayToChart.push(['Label', 'Value']);
     		arrayToChart.push(valores[i]);
     		
-    		if ( isMobile ) {
-    			this.addValores(arrayToChart, options, "divMobile_" + self.instanceId + "_" + i);
-    		} else {
+    		//if ( isMobile ) {
+    			//this.addValores(arrayToChart, options, "divMobile_" + self.instanceId + "_" + i);
+    		//} else {
     			this.addValores(arrayToChart, options, "div_" + self.instanceId + "_" + i);
-    		}
+    		//}
     	}
+    },
+    
+    generateHtml: function(data) {    	
+    	var htmlResult = '';
+    	
+    	if (!WCMAPI.isMobileAppMode()) {
+    		htmlResult += '<div class="col-md-3 col-lg-3 col-sm-2 col-xs-6" id="div_esquerda_' + this.instanceId + '"></div>';
+    	}
+    	
+    	for (var i=0; i<data.content.length; i++) {
+    		htmlResult += "<div class='col-md-2 col-lg-2 col-sm-3 col-xs-6' style='text-align: center;'>";
+    		htmlResult += "<div id='div_" + this.instanceId + "_" + data.content[i].indice + "' style='text-align: center;'>";
+    		htmlResult += "</div>";
+    		htmlResult += "</div>";
+    	}
+    	
+    	return htmlResult;
     },
     
     addValores: function(vValores, options, divId) {

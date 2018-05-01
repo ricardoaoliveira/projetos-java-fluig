@@ -22,9 +22,18 @@ var GoogleGaugeChart = SuperWidget.extend({
         	}	
     	}
     	
-    	var template = $("#template_" + self.instanceId).html();
+    	//var template = $("#template_" + self.instanceId).html();
+    	
+    	/*var template = "{{#content}}"; 
+    	template += "<div class='col-md-2 col-lg-2 col-sm-3 col-xs-6'>";
+    	template += "<div id='div_${instanceId}_{{indice}}'>";
+    	template += "</div>";
+    	template += "</div>";
+    	template += "{{/content}}";*/
 
-    	var html = Mustache.render(template, data);
+    	//var html = Mustache.render(template, data);
+    	
+    	var html = this.generateHtml(data);
     	
     	$("#containerCharts_" + self.instanceId).append(html);
     	    	
@@ -52,6 +61,19 @@ var GoogleGaugeChart = SuperWidget.extend({
     		arrayToChart.push(valores[i]);
     		this.addValores(arrayToChart, options, "div_" + self.instanceId + "_" + i);	
     	}
+    },
+    
+    generateHtml: function(data) {    	
+    	var htmlResult = '';
+    	
+    	for (var i=0; i<data.content.length; i++) {
+    		htmlResult += "<div class='col-md-2 col-lg-2 col-sm-3 col-xs-6' style='text-align: center;'>";
+    		htmlResult += "<div id='div_" + this.instanceId + "_" + data.content[i].indice + "' style='text-align: center;'>";
+    		htmlResult += "</div>";
+    		htmlResult += "</div>";
+    	}
+    	
+    	return htmlResult;
     },
     
     addValores: function(vValores, options, divId) {

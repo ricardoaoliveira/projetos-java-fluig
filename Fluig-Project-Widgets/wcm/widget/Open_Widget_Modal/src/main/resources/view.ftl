@@ -13,6 +13,23 @@
 		Acessos Externos
 	</button>
 	
+	<button id="btnResultadoAssessorias">
+		Resultado das Assessorias
+	</button>
+	
+	<button id="btnIndicadoresOperacao">
+		Indicadores da Operação
+	</button>
+	
+	<button id="btnAcompanhamentoEscobs">
+		Acompanhamento Escobs
+	</button>
+	
+	<button id="btnAcompanhamentoEscobsDocs">
+		Acompanhamento Escobs Docs
+	</button>
+	
+	
 </div>
 
 <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
@@ -27,6 +44,7 @@
 		        ftl: 'view.ftl',		        
 		    },
 		    id: 'fluig-modal',
+		    size: 'full',
 		    actions: []		    
 		}, function(err, data) {
 		    if(err) {
@@ -38,9 +56,21 @@
 		
 		$("#fluig-modal").hide();
 		
+		var grupoWidgetsTelefoneModalTitulo = '<h2 class="page-header">';
+		grupoWidgetsTelefoneModalTitulo += '<span class="fluigicon fluigicon-column-chart"></span>&nbsp;';
+		grupoWidgetsTelefoneModalTitulo += pTitle;
+		grupoWidgetsTelefoneModalTitulo += '</h2>';
+		
 		setTimeout(function(){ 
-			$(".modal-title").html( $(".page-header").html() );
-			$(".page-header").hide();		
+			$("#" + pWidgetCode).hide();
+			
+			var modalTitle = "<h2 class='page-header'>";
+			modalTitle +=  $(".page-header").html();
+			modalTitle += "</h2>";
+			$(".page-header").html("");
+			$(".modal-title").html( modalTitle );
+						
+			$(".page-header " + pWidgetCode).hide();		
 			
 			$("#fluig-modal").show();	
 		}, 300);
@@ -54,8 +84,20 @@
 		openWidget("Lista de Telefones (Colaboradores)", "Lista_Telefones");
 	});
 	
-	$("#btnAcessosExternos").click(function() {
-		openWidget("Acessos Externos", "Acessos_Externos");
+	$("#btnResultadoAssessorias").click(function() {
+		openWidget("Resultado das Assessorias", "Google_Gauge_Chart");
+	});
+	
+	$("#btnIndicadoresOperacao").click(function() {
+		openWidget("Indicadores da Operação", "Google_Gauge_Chart_3");
+	});
+	
+	$("#btnAcompanhamentoEscobs").click(function() {
+		openWidget("Acompanhamento Escobs", "Google_Pie_Chart");
+	});
+	
+	$("#btnAcompanhamentoEscobsDocs").click(function() {
+		openWidget("Acompanhamento Escobs Docs", "Acompanhamento_Escobs_Docs");
 	});
 	
 </script>
