@@ -151,7 +151,7 @@ var SlideShow = SuperWidget.extend({
 				images: images,
 				autoSize: this.autoSize,
 				resize: this.resize,
-				interval: 10000
+				interval: 5000
 			};
 			FLUIGC.carousel(photoList, settings);
 		} else {
