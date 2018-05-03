@@ -5,7 +5,7 @@ application.description=Abrir Reserva Sala de Reuniao
 application.category=SYSTEM
 application.renderer=freemarker
 application.resource.js.1=/resources/js/Open_Reserva_Sala_Reuniao.js
-application.resource.images.1/resources/images/Agenda.jpg
+application.resource.images.1/resources/images/Agenda.png
 developer.code=Lenovo-PC
 developer.name=Ricardo Oliveira
 developer.url=http://www.fluig.com

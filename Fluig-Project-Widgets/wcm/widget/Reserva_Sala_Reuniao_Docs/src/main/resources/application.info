@@ -5,6 +5,7 @@ application.description=Reserva da Sala de Reuniao Docs
 application.category=SYSTEM
 application.renderer=freemarker
 application.resource.js.1=/resources/js/Reserva_Sala_Reuniao_Docs.js
+application.resource.images.1=/resources/images/Sala-Reuniao.png
 developer.code=Lenovo-PC
 developer.name=Ricardo Oliveira
 developer.url=http://www.fluig.com

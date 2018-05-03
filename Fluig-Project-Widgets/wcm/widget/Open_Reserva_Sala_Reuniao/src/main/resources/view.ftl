@@ -42,7 +42,7 @@ data-params="OpenReservaSalaReuniao.instance()">
 		        ftl: 'view.ftl',		        
 		    },
 		    id: 'fluig-modal',
-		    size: 'full | large | small',
+		    size: 'full | large',
 		    actions: []		    
 		}, function(err, data) {
 		    if(err) {

@@ -1,1 +1,4 @@
 /* Coloque aqui seu codigo CSS */
+a {
+	cursor: pointer;
+}

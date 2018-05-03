@@ -9,7 +9,7 @@ var OpenReservaSalaReuniao = SuperWidget.extend({
     		content: [{
     			titulo: "Reserva da Sala de Reunião",
     			codigo: "Reserva_Sala_Reuniao_Docs",
-    			imageUrl: "/Open_Reserva_Sala_Reuniao/resources/images/Agenda.jpg",
+    			imageUrl: "/Open_Reserva_Sala_Reuniao/resources/images/Agenda.png",
     			descricao: "Clique aqui para visualizar"
     		}]    			
     	};

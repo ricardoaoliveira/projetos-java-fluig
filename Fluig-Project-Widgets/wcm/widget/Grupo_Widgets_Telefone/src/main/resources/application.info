@@ -5,6 +5,7 @@ application.description=codigo
 application.category=SYSTEM
 application.renderer=freemarker
 application.resource.js.1=/resources/js/Grupo_Widgets_Telefone.js
+application.resource.css.1=/resources/css/Grupo_Widgets_Telefone.css
 developer.code=Lenovo-PC
 developer.name=Ricardo Oliveira
 developer.url=http://www.fluig.com
