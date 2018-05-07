@@ -12,7 +12,11 @@ var initializeArvoreGED = function() {
 	                        "label": "Abrir",
 	                        "action": function (obj) {
                         		try {
-    	                        	window.location.href = "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=608";	 
+                        			var folderRaiz = 608;
+                        			if (window.location.href.indexOf("3732") == -1) {
+                        				folderRaiz = 175;
+                        			}                        			
+    	                        	window.location.href = "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=" + folderRaiz;	 
                         		} catch(err) {
                         			console.log(err);
                         		}		
