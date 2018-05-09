@@ -1,0 +1,17 @@
+application.type=widget
+application.code=Boas_Vindas
+application.title=Boas Vindas
+application.description=Boas Vindas
+application.category=SYSTEM
+application.renderer=freemarker
+application.resource.js.1=/resources/js/Boas_Vindas.js
+application.resource.images.1=/resources/images/Boas-Vindas-Left.png
+application.resource.images.2=/resources/images/Boas-Vindas-Right.png
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+
