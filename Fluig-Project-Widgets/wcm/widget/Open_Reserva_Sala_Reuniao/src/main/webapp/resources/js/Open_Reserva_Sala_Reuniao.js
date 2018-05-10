@@ -5,11 +5,12 @@ var OpenReservaSalaReuniao = SuperWidget.extend({
     },
     
     initView: function(vInstanceId) {
+    		
     	var data = {
     		content: [{
     			titulo: "Reserva da Sala de Reunião",
-    			codigo: "Reserva_Sala_Reuniao_Docs",
-    			imageUrl: "/Open_Reserva_Sala_Reuniao/resources/images/Agenda.png",
+    			codigo: "Reserva_Sala_Reuniao",
+    			imageUrl: "",
     			descricao: "Clique aqui para visualizar"
     		}]    			
     	};
@@ -29,6 +30,7 @@ var OpenReservaSalaReuniao = SuperWidget.extend({
     			console.log(e);
     		}
     	}
+    		
     },
   
 });

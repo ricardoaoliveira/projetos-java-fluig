@@ -25,8 +25,12 @@
 		Acompanhamento Escobs
 	</button>
 	
-	<button id="btnAcompanhamentoEscobsDocs">
+	<button id="btnAcompanhamentoEscobsDocs" style="display:none;">
 		Acompanhamento Escobs Docs
+	</button>
+	
+	<button id="btnReservaSalaReuniao">
+		Reserva da Sala de Reunião
 	</button>
 	
 	
@@ -98,6 +102,10 @@
 	
 	$("#btnAcompanhamentoEscobsDocs").click(function() {
 		openWidget("Acompanhamento Escobs Docs", "Acompanhamento_Escobs_Docs");
+	});
+	
+	$("#btnReservaSalaReuniao").click(function() {
+		openWidget("Reserva da Sala de Reunião", "Reserva_Sala_Reuniao");
 	});
 	
 </script>

@@ -21,32 +21,33 @@ var BoasVindas = SuperWidget.extend({
     	}
     	if ( exibeBoasVindas ) {
 
-    		//var data = this.searchData();
+			localStorage.setItem("boas-vindas-fluig-mgw"  + WCMAPI.getUserCode(), WCMAPI.getUserCode());
     		
-    		console.log("Boas Vindas: data: " + data);
+    		var imagem = '<div class="col-md-6"><image src="/Boas_Vindas/resources/images/Boas-Vindas-Left.png" style="width: 100%; height: 100%;" /> </div>';
+
+    		var texto = '<div class="col-md-6"><p class="">A Intranet é uma poderosa ferramenta de comunicação que influencia positivamente a relação empresa / funcionários, facilita a divulgação de informações, agiliza a implantação de processos, promove a integração dos funcionários, favorece o compartilhamento de recursos e habilidades, além de ter forte influencia na redução de custos operacionais.</p>';
+    	    texto += '<p class="">A MGW investiu em um sistema intranet almejando bons resultados e conseguiremos isso com o engajamento dos colaboradores, pois de nada adianta que a Intranet esteja dentro das tendências, com ferramentas úteis e com informações relevantes sobre a MGW se os colaboradores não aderirem ao uso.</p>';
+    	    texto += '<p class="">É fundamental que tenhamos em mente, que a Geração de Conteúdo não poderá ficar restrita apenas a um grupo de pessoas.</p>';
+    	    texto += '<p class="">A Intranet tem que ter uma “alimentação colaborativa” e para isso teremos que incentivar que cada colaborador apresente sugestões !!</p>';
+    		texto += '<p class="">Seria legal que trouxessem ideias para criarmos um Banco de Ideias para a Intranet.</p></div>';
     		
-    		//if (data.content != null) {
-    			//var urlImagem = WCMAPI.getServerURL() + "/webdesk/streamcontrol/Boas-vindas-6.png?WDCompanyId=1&WDNrDocto=257&WDNrVersao=" 
-    				//+ data.content[0]["documentPK.version"]; 
-    			
-    			localStorage.setItem("boas-vindas-fluig-mgw"  + WCMAPI.getUserCode(), WCMAPI.getUserCode());
-    			
-    			var myModal = FLUIGC.modal({
-    				title: 'Sejam Bem-Vindos à nova intranet MGW Ativos !!',
-    				content: '<div class="row col-md-6"><image src="/Boas_Vindas/resources/images/Boas-Vindas-Left.png" style="width: 100%; height: 100%;" /></div> <div class="row col-md-6"><image src="/Boas_Vindas/resources/images/Boas-Vindas-Right.png" style="width: 100%; height: 100%;" /></div>',
-    				id: 'fluig-modal',
-    				size: 'full',
-    				actions: []
-    			}, function(err, data) {
-    				if(err) {
-    					// do error handling
-    				} else {
-    					// do something with data
-    				}
-    				
-    				//$(".model-body").css("max-height", "100%");
-    			});
-    		//}
+			var myModal = FLUIGC.modal({
+				title: 'Sejam Bem-Vindos à nova intranet MGW Ativos !!',
+				content: '<div class="row">' + imagem + texto + "</div>", 
+				id: 'fluig-modal',
+				size: 'full',
+				actions: []
+			}, function(err, data) {
+				if(err) {
+					// do error handling
+				} else {
+					// do something with data
+				}
+				
+				//$(".model-body").css("max-height", "100%");
+			});
+			
+			$(".modal-title").html("<h2  class='page-header'><strong>Seja bem vindo a nova intranet MGW Ativos</strong></h2>");
     	}
 
     },

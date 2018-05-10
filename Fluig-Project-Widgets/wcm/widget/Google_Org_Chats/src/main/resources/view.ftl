@@ -51,7 +51,7 @@
 		
 			buildRow('CEO', 'Adm_Financeiro', 'Gustavo', 'Adm / Financeiro'),
 				buildRow('Adm_Financeiro', 'Financeiro', '', 'Financeiro'),
-				buildRow('Adm_Financeiro', 'Controller', '', 'Controller'),
+				buildRow('Adm_Financeiro', 'Controladoria', '', 'Controladoria'),
 		
 			buildRow('CEO', 'Operacao', 'Evaldo', 'Operação'),
 				buildRow('Operacao', 'BackOffice', '', 'BackOffice'),

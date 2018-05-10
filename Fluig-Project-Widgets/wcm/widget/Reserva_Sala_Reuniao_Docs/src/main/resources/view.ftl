@@ -21,7 +21,7 @@
 	
 	<div class="container-fluid" style="text-align: center;">
 	
-		<img src="/Reserva_Sala_Reuniao_Docs/resources/images/Sala-Reuniao.png" style="width: 600px; height: 350px;" />
+		<img id="image_${instanceId}" src="/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=276&WDNrVersao=1003" style="width: 100%; height: 100%;" />
 	
 	</div>
 
