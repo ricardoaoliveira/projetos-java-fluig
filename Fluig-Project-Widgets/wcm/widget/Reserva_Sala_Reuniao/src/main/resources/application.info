@@ -1,0 +1,15 @@
+application.type=widget
+application.code=Reserva_Sala_Reuniao
+application.title=Reserva Sala de Reuniao
+application.description=Reserva Sala de Reuniao
+application.category=SYSTEM
+application.renderer=freemarker
+application.resource.js.1=/resources/js/Reserva_Sala_Reuniao.js
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+
