@@ -5,7 +5,11 @@ var ReservaSalaReuniao = SuperWidget.extend({
     },
     
     initView: function() {
-    	var documentId = 276;
+    	//PROD
+    	//var documentId = 276;
+
+    	//TESTES
+    	var documentId = 1376;
     	
     	var c1 = DatasetFactory.createConstraint("documentPK.documentId", documentId, documentId, ConstraintType.MUST);
     	var c2 = DatasetFactory.createConstraint("activeVersion", "true", "true", ConstraintType.MUST);
