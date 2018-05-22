@@ -2,7 +2,7 @@ var BoasVindas = SuperWidget.extend({
 
     init: function() {
     	console.log(this.instanceId);
-    	this.initView();
+    	//this.initView();
     },
     
     initView: function() {
