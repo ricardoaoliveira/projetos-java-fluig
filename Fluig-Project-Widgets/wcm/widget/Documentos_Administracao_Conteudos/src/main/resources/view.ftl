@@ -27,6 +27,7 @@
 					</div>
 				</div>
 				<div class="col-md-4">
+				
 					<h2 class="page-header"> 
 					<span class="fluigicon fluigicon-folder-open"></span>
 						<span>
@@ -36,6 +37,22 @@
 					<div id="container_documentos_${instanceId}">
 									
 					</div>
+					
+					<h2 class="page-header"> 
+					<span class="fluigicon fluigicon-picture"></span>
+						<span>
+							Imagens
+						</span>    		
+					</h2>
+					
+					<div id="container_redimensionar_imagens_${instanceId}">
+									
+					</div>
+					
+					<div class="row col-md-12">
+						<p>OBS: É recomendável redimensionar imagens sempre de tamanho maior para menor, pois gera menos distorções visuais.</p>
+					</div>	
+					
 				</div>
 			</div>
 			
@@ -53,6 +70,8 @@
 				<li class="list-group-item">
 					<span class="{{icon}}"></span> <span> 
 						<a href="#" onclick="abrirVideo('{{url}}', '{{label}}', '{{icon}}' )"> {{label}} </a> 
+					</span>
+					<span class="{{iconLink}}" onclick="window.open('{{link}}');" style="float:right;" title="{{tooltip}}">
 					</span>
 				</li>
 				{{/content}}					
@@ -143,41 +162,65 @@
 				icon: "fluigicon fluigicon-paperclip",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=334&WDNrVersao=1000",
 				label: "Banner Corporativo",
+				iconLink: "fluigicon fluigicon-folder-open",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=72",
+				tooltip: "Pasta",
 			},
 			{
 				icon: "fluigicon fluigicon-paperclip",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=332&WDNrVersao=1000",
 				label: "Mural de Avisos",
+				iconLink: "fluigicon fluigicon-folder-open",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=71",
+				tooltip: "Pasta",
 			},
 			{
 				icon: "fluigicon fluigicon-cloud",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=335&WDNrVersao=1000",
 				label: "Sistemas Corporativos (Acessos Externos)",
+				iconLink: "fluigicon fluigicon-form",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=8",
+				tooltip: "Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-calendar",	
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=333&WDNrVersao=1000",
 				label: "Reserva da Sala de Reunião",
+				iconLink: "fluigicon fluigicon-picture",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=275",
+				tooltip: "Imagem",
 			},
 			{
 				icon: "fluigicon fluigicon-phone",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=339&WDNrVersao=1000",
 				label: "Telefones Assessorias",
+				iconLink: "fluigicon fluigicon-form",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=106",
+				tooltip: "Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-phone",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=341&WDNrVersao=1000",
 				label: "Telefones Colaboradores",
+				iconLink: "fluigicon fluigicon-form",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=7",
+				tooltip: "Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-phone",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=342&WDNrVersao=1000",
 				label: "Telefones Emergência",
+				iconLink: "fluigicon fluigicon-form",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=107",
+				tooltip: "Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-rss",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=344&WDNrVersao=1000",
 				label: "Notícias",
+				iconLink: "fluigicon fluigicon-form",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=100",
+				tooltip: "Formulário",
 			},
 		],
 	};
@@ -188,36 +231,77 @@
 				icon: "fluigicon fluigicon-organogram",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=345&WDNrVersao=1000",
 				label: "Organograma MGW Ativos",
+				iconLink: "fluigicon fluigicon-picture",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=313",
+				tooltip: "Imagem",
 			},
 			{
 				icon: "fluigicon fluigicon-food",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=346&WDNrVersao=1000",
 				label: "Restaurantes Próximos (Parâmetros)",
+				iconLink: "fluigicon fluigicon-form",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=103",
+				tooltip: "Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-user-cost",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=336&WDNrVersao=1000",
 				label: "Benefícios",
+				iconLink: "fluigicon fluigicon-form",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=95",
+				tooltip: "Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-cake fluigicon-md",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=337&WDNrVersao=1000",
 				label: "Aniversariantes do Mês",
+				iconLink: "fluigicon fluigicon-form",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=38",
+				tooltip: "Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-list",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=338&WDNrVersao=1000",
 				label: "Convênios",
+				iconLink: "fluigicon fluigicon-form",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=51",
+				tooltip: "Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-list",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=340&WDNrVersao=1000",
 				label: "Dicas para Leituras, Passeios e etc",
+				iconLink: "fluigicon fluigicon-form",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=14",
+				tooltip: "Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-user-role",
 				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=343&WDNrVersao=1000",
 				label: "Treinamento e Desenvolvimento",
+				iconLink: "fluigicon fluigicon-form",
+				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=108",
+				tooltip: "Formulário",
+			},
+		],
+	};
+	
+	var data_redimensionar_imagens = {
+		content: [
+			{
+				icon: "fluigicon fluigicon-minimize",
+				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=352&WDNrVersao=1000",
+				label: "Redimensionando imagem para 120 x 90 px",
+			},
+			{
+				icon: "fluigicon fluigicon-cut",
+				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=353&WDNrVersao=1000",
+				label: "Removendo parte de conteúdo em branco de imagem",
+			},
+			{
+				icon: "fluigicon fluigicon-newspaper",
+				url: "/webdesk/streamcontrol/?WDCompanyId=1&WDNrDocto=354&WDNrVersao=1000",
+				label: "Criando imagem 120 x 90 px, a partir de imagem menor",
 			},
 		],
 	};
@@ -236,7 +320,7 @@
 			},
 		],
 	};
-
+	
 	var template_conteudos = $("#template_conteudos_${instanceId}").html();
 	var html_intranet = Mustache.render(template_conteudos, data_intranet);	
 	$("#container_intranet_${instanceId}").html(html_intranet);
@@ -247,5 +331,8 @@
 	var template_documentos = $("#template_documentos_${instanceId}").html();
 	var html_documentos = Mustache.render(template_documentos, data_documentos);	
 	$("#container_documentos_${instanceId}").html(html_documentos);
+	
+	var html_redimensionar_imagens = Mustache.render(template_conteudos, data_redimensionar_imagens);	
+	$("#container_redimensionar_imagens_${instanceId}").html(html_redimensionar_imagens);
 
 </script>
