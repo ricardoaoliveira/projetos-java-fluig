@@ -14,13 +14,13 @@
 						</span>    		
 					</h2>
 					<div class="col-md-6">
-						<h3>Intranet MGW Ativos</h3>
+						<h3>Intranet MGW Ativos (Vídeos)</h3>
 						<div id="container_intranet_${instanceId}">
 							
 						</div>
 					</div>
 					<div class="col-md-6">
-						<h3>Portal RH</h3>
+						<h3>Portal RH (Vídeos)</h3>
 						<div id="container_portal_rh_${instanceId}">
 									
 						</div>
@@ -41,7 +41,7 @@
 					<h2 class="page-header"> 
 					<span class="fluigicon fluigicon-picture"></span>
 						<span>
-							Imagens
+							Imagens (Vídeos)
 						</span>    		
 					</h2>
 					
@@ -164,7 +164,7 @@
 				label: "Banner Corporativo",
 				iconLink: "fluigicon fluigicon-folder-open",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=72",
-				tooltip: "Pasta",
+				tooltip: "Ir para a Pasta",
 			},
 			{
 				icon: "fluigicon fluigicon-paperclip",
@@ -172,7 +172,7 @@
 				label: "Mural de Avisos",
 				iconLink: "fluigicon fluigicon-folder-open",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=71",
-				tooltip: "Pasta",
+				tooltip: "Ir para a Pasta",
 			},
 			{
 				icon: "fluigicon fluigicon-cloud",
@@ -180,7 +180,7 @@
 				label: "Sistemas Corporativos (Acessos Externos)",
 				iconLink: "fluigicon fluigicon-form",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=8",
-				tooltip: "Formulário",
+				tooltip: "Ir para o Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-calendar",	
@@ -188,7 +188,7 @@
 				label: "Reserva da Sala de Reunião",
 				iconLink: "fluigicon fluigicon-picture",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=275",
-				tooltip: "Imagem",
+				tooltip: "Ir para pasta da Imagem",
 			},
 			{
 				icon: "fluigicon fluigicon-phone",
@@ -196,7 +196,7 @@
 				label: "Telefones Assessorias",
 				iconLink: "fluigicon fluigicon-form",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=106",
-				tooltip: "Formulário",
+				tooltip: "Ir para o Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-phone",
@@ -204,7 +204,7 @@
 				label: "Telefones Colaboradores",
 				iconLink: "fluigicon fluigicon-form",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=7",
-				tooltip: "Formulário",
+				tooltip: "Ir para o Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-phone",
@@ -212,7 +212,7 @@
 				label: "Telefones Emergência",
 				iconLink: "fluigicon fluigicon-form",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=107",
-				tooltip: "Formulário",
+				tooltip: "Ir para o Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-rss",
@@ -220,7 +220,7 @@
 				label: "Notícias",
 				iconLink: "fluigicon fluigicon-form",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=100",
-				tooltip: "Formulário",
+				tooltip: "Ir para o Formulário",
 			},
 		],
 	};
@@ -233,7 +233,7 @@
 				label: "Organograma MGW Ativos",
 				iconLink: "fluigicon fluigicon-picture",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=313",
-				tooltip: "Imagem",
+				tooltip: "Ir para a pasta da Imagem",
 			},
 			{
 				icon: "fluigicon fluigicon-food",
@@ -241,7 +241,7 @@
 				label: "Restaurantes Próximos (Parâmetros)",
 				iconLink: "fluigicon fluigicon-form",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=103",
-				tooltip: "Formulário",
+				tooltip: "Ir para o Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-user-cost",
@@ -249,7 +249,7 @@
 				label: "Benefícios",
 				iconLink: "fluigicon fluigicon-form",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=95",
-				tooltip: "Formulário",
+				tooltip: "Ir para o Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-cake fluigicon-md",
@@ -257,7 +257,7 @@
 				label: "Aniversariantes do Mês",
 				iconLink: "fluigicon fluigicon-form",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=38",
-				tooltip: "Formulário",
+				tooltip: "Ir para o Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-list",
@@ -265,7 +265,7 @@
 				label: "Convênios",
 				iconLink: "fluigicon fluigicon-form",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=51",
-				tooltip: "Formulário",
+				tooltip: "Ir para o Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-list",
@@ -273,7 +273,7 @@
 				label: "Dicas para Leituras, Passeios e etc",
 				iconLink: "fluigicon fluigicon-form",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=14",
-				tooltip: "Formulário",
+				tooltip: "Ir para o Formulário",
 			},
 			{
 				icon: "fluigicon fluigicon-user-role",
@@ -281,7 +281,7 @@
 				label: "Treinamento e Desenvolvimento",
 				iconLink: "fluigicon fluigicon-form",
 				link: "/portal/p/1/ecmnavigation?app_ecm_navigation_folder=108",
-				tooltip: "Formulário",
+				tooltip: "Ir para o Formulário",
 			},
 		],
 	};
