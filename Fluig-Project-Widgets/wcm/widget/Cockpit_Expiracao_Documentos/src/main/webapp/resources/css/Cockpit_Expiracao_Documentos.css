@@ -1,0 +1,19 @@
+/* Coloque aqui seu codigo CSS */
+
+.documento_vermelho { 
+	background-color: orangered !important;
+	font-weight: bold !important;
+	color: black !important;
+}
+
+.documento_amarelo { 
+	background-color: gold !important;
+	font-weight: bold !important;
+	color: black !important;
+}
+
+.documento_verde { 
+	background-color: springgreen !important;
+	font-weight: bold !important;
+	color: black !important;
+}
