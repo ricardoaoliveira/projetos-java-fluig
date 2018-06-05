@@ -1,0 +1,16 @@
+application.type=widget
+application.code=Cockpit_Expiracao_Documentos
+application.title=Cockpit Expiracao Documentos
+application.description=Cockpit Expiracao Documentos
+application.category=SYSTEM
+application.renderer=freemarker
+application.resource.js.1=/resources/js/Cockpit_Expiracao_Documentos.js
+application.resource.css.1=/resources/css/Cockpit_Expiracao_Documentos.css
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+
