@@ -4,12 +4,12 @@ import javax.xml.ws.BindingProvider;
 
 import net.java.dev.jaxb.array.AnyTypeArray;
 import net.java.dev.jaxb.array.StringArray;
-
-import com.totvs.technology.ecm.dataservice.ws.DatasetDto;
-import com.totvs.technology.ecm.dataservice.ws.DatasetService;
-import com.totvs.technology.ecm.dataservice.ws.ECMDatasetServiceService;
-import com.totvs.technology.ecm.dataservice.ws.SearchConstraintDto;
-import com.totvs.technology.ecm.dataservice.ws.SearchConstraintDtoArray;
+  
+import com.datasul.technology.webdesk.dataservice.ws.DatasetDto;
+import com.datasul.technology.webdesk.dataservice.ws.DatasetService;
+import com.datasul.technology.webdesk.dataservice.ws.DatasetServiceService;
+import com.datasul.technology.webdesk.dataservice.ws.SearchConstraintDto;
+import com.datasul.technology.webdesk.dataservice.ws.SearchConstraintDtoArray;
 
 /**
  * Classe que utiliza todos os métodos de DatasetService.
@@ -34,7 +34,7 @@ public class DatasetServiceClient {
 	SearchConstraintDtoArray searchConstraintDtoArray = new SearchConstraintDtoArray();
 	
 	// Instancia DatasetServiceService.
-	ECMDatasetServiceService datasetServiceService = new ECMDatasetServiceService();
+	DatasetServiceService datasetServiceService = new DatasetServiceService();
 	DatasetService service = datasetServiceService.getDatasetServicePort();
 	
 	// Inicia execução da classe.
@@ -46,7 +46,7 @@ public class DatasetServiceClient {
 		
 		// Configura acesso ao WebServices.
 		BindingProvider bp = (BindingProvider) dsc.service;
-		bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://mgwativosgestaoeadmi3732.fluig.cloudtotvs.com.br/webdesk/DatasetService");
+		bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://192.168.15.11:8080/webdesk/DatasetService");
 		
 		try {
 			// Chama método que configura os valores das variáveis.
@@ -65,9 +65,9 @@ public class DatasetServiceClient {
 	 */
 	public void setParameters() throws Exception {
 		this.loginColaborador = "admin";
-		this.senhaColaborador = "Mf4UEuac";
+		this.senhaColaborador = "adm";
 		this.codigoEmpresa = 1;
-		this.nomeDataset = "colleague";
+		this.nomeDataset = "ecm";
 	}
 	
 	/**
@@ -76,7 +76,7 @@ public class DatasetServiceClient {
 	 */
 	public void changeMethod() throws Exception {
 		// Chama método getAvailableDatasets.
-		this.getAvailableDatasets();
+		//this.getAvailableDatasets();
 		
 		// Chama método getDataset.
 		//this.getDataset();

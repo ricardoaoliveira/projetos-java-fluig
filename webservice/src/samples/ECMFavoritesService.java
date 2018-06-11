@@ -15,12 +15,12 @@ import com.totvs.technology.ecm.dm.ws.ProcessDefinitionVersionDtoArray;
  * No método changeMethod, pode-se escolher qual método será executado.
  */
 public class ECMFavoritesService {
-    String fluigURL = "http://mgwativosgestaoeadmi3732.fluig.cloudtotvs.com.br:80";
+    String fluigURL = "http://192.168.15.11:8080";
     String userId = "admin";
     String userLogin = "admin";
-    String userPassword = "Mf4UEuac";
+    String userPassword = "adm";
     String processId = "BPM-TESTE-Simples";
-    int tenantId = 3;
+    int tenantId = 1;
     int nrDocument = 1092;
     int nrVersao = 1000;
     int limit = 10;

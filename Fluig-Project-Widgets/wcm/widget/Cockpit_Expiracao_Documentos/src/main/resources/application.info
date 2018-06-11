@@ -4,8 +4,13 @@ application.title=Cockpit Expiracao Documentos
 application.description=Cockpit Expiracao Documentos
 application.category=SYSTEM
 application.renderer=freemarker
-application.resource.js.1=/resources/js/Cockpit_Expiracao_Documentos.js
-application.resource.css.1=/resources/css/Cockpit_Expiracao_Documentos.css
+
+application.resource.js.2=/resources/js/Cockpit_Expiracao_Documentos.js
+application.resource.css.2=/resources/css/Cockpit_Expiracao_Documentos.css
+
+application.resource.js.1=/resources/js/datatables.min.js
+application.resource.css.1=/resources/js/datatables.min.css
+
 developer.code=Lenovo-PC
 developer.name=Ricardo Oliveira
 developer.url=http://www.fluig.com

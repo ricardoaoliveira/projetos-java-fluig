@@ -12,7 +12,7 @@ public class JavaClientRest {
 	public static void main(String[] args) {
 		try {
 
-			URL url = new URL("http://mgwativosgestaoeadmi3732.fluig.cloudtotvs.com.br/api/public/admin/tenant");
+			URL url = new URL("http://mgwativosgestaoeadmi3732.fluig.cloudtotvs.com.br/api/public/2.0/admin/tenant");
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/json");
