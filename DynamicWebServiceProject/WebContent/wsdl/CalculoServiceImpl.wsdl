@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://mgwativos.com.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://mgwativos.com.br" xmlns:intf="http://mgwativos.com.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://mgwativos.com.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="somar">
+    <complexType>
+     <sequence>
+      <element name="a" type="xsd:int"/>
+      <element name="b" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="somarResponse">
+    <complexType>
+     <sequence>
+      <element name="somarReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="somarRequest">
+
+      <wsdl:part element="impl:somar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="somarResponse">
+
+      <wsdl:part element="impl:somarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CalculoServiceImpl">
+
+      <wsdl:operation name="somar">
+
+         <wsdl:input message="impl:somarRequest" name="somarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:somarResponse" name="somarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CalculoServiceImplSoapBinding" type="impl:CalculoServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="somar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="somarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="somarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CalculoServiceImplService">
+
+      <wsdl:port binding="impl:CalculoServiceImplSoapBinding" name="CalculoServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/DynamicWebServiceProject/services/CalculoServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

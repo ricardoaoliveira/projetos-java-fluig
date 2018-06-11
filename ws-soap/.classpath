@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry including="**/*.java" kind="src" path="src/main/java"/>
+	<classpathentry kind="var" path="M2_REPO/javax/servlet/javax.servlet-api/3.0.1/javax.servlet-api-3.0.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="M2_REPO/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/fluig/fluig-ws-client/1.4.12/fluig-ws-client-1.4.12.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/fluig/fluig-sdk-api/1.5.2/fluig-sdk-api-1.5.2.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/fluig/fluig-sdk-common/1.5.2/fluig-sdk-common-1.5.2.jar"/>
+	<classpathentry kind="var" path="M2_REPO/javax/javaee-api/8.0/javaee-api-8.0.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/sun/mail/javax.mail/1.6.0/javax.mail-1.6.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

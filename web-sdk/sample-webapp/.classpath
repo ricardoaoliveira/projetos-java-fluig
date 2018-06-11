@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/com/fluig/foundation-security-authentication-saml/1.5.2/foundation-security-authentication-saml-1.5.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fluig/fluig-sdk-api/1.5.2/fluig-sdk-api-1.5.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fluig/fluig-sdk-common/1.5.2/fluig-sdk-common-1.5.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/javaee-api/6.0/javaee-api-6.0.jar"/>
+</classpath>

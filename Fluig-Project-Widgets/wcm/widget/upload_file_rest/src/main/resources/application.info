@@ -1,0 +1,15 @@
+application.type=widget
+application.code=upload_file_rest
+application.title=upload_file_rest
+application.description=upload_file_rest
+application.category=Samples
+application.renderer=freemarker
+developer.code=fluig
+developer.name=fluig
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=false
+view.file=view.ftl
+edit.file=edit.ftl
+application.resource.js.1=/resources/js/upload_file_rest.js
+application.resource.js.2=/resources/js/jquery.fileupload.js

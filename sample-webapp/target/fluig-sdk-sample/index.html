@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Fluig SDK Sample</title>
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+        <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+        <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+        <style>
+            body {
+                padding-top: 60px;
+            }
+            .fluig-style-guide.fluig-toast {
+                top: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="fluig-style-guide">
+            <form role="form">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                        <h1><span id="user-name"></span><small>, o que deseja compartilhar?</small></h1>
+                        <div class="form-group">
+                            <textarea class="form-control" id="post-area" rows="8"></textarea>
+                        </div>
+                        <div class="form-group text-right">
+                            <button disabled type="button" class="btn btn-primary" data-share-post>
+                                <span class="fluigicon fluigicon-comment fluigicon-sm"></span> Compartilhar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+    <script type="text/javascript">
+        (function() {
+            'use strict';
+
+            var postArea = $('#post-area');
+            var sharePostBtn = $('[data-share-post]');
+
+            postArea.on('keypress', function() {
+                return this.value.length < 500;
+            }).on('keyup', function() {
+                sharePostBtn.prop('disabled', this.value.length < 3);
+            })
+
+            sharePostBtn.on('click', function() {
+                FLUIGC.ajax({
+                    url: '/sdk-sample/api/rest/sample/post',
+                    contentType: 'text/plain',
+                    type: 'POST',
+                    data: postArea.val()
+                }, function(err, data) {
+                    if (!err) {
+                        postArea.val("");
+                        FLUIGC.toast({
+                            message: 'Post compartilhado no fluig!',
+                            type: 'success'
+                        });
+                    } else {
+                        FLUIGC.toast({
+                            message: 'Não foi possível compartilhar seu post no fluig!',
+                            type: 'danger'
+                        });
+                    }
+                });
+            });
+
+            FLUIGC.ajax({
+                url: '/sdk-sample/api/rest/sample/name',
+                contentType: 'application/json'
+            }, function(err, data) {
+                $('#user-name').text(err ? 'Visitante' : data.content);
+            });
+        }());
+    </script>
+</html>
