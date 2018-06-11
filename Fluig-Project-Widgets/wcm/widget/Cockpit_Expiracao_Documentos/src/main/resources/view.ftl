@@ -6,7 +6,7 @@
 		Validade de Documentos
 	</h2>
 
-	<div class="row col-md-12 form-inline">
+	<div class="row col-md-12 form-inline" align="right">
 		<label>Exibir: </label>
 		<div class="checkbox">
 			<label style="color: green; font-weight: bold;">
@@ -17,7 +17,7 @@
 		<div class="checkbox">
 			<label style="color: yellow; font-weight: bold;">
 				<input type="checkbox" id="doc_a_expirar_${instanceId}" name="doc_a_expirar_${instanceId}" checked onchange="filtrarDocumentos_${instanceId}();"> 
-				À expirar
+				À Expirar
 			</label>
 		</div>
 		<div class="checkbox">
@@ -127,11 +127,6 @@
 				
 		var dataset = DatasetFactory.getDataset("document", fields, constraints, sortingFields);
 	
-		if (dataset != null && dataset.values != null && dataset.values.length > 0) {
-			console.log("dataset.values: ");
-			console.log(dataset.values);
-		}
-		
 		return dataset.values;
 	};
 	
@@ -147,11 +142,6 @@
 				
 		var dataset = DatasetFactory.getDataset("document", fields, constraints, sortingFields);
 	
-		if (dataset != null && dataset.values != null && dataset.values.length > 0) {
-			console.log("dataset.values: ");
-			console.log(dataset.values);
-		}
-		
 		return dataset.values;
 	};
 	
@@ -182,19 +172,25 @@
 			
 				var strExpirationDate = null;
 			
-				if (data_in[i].expirationDate != data_in[i].createDate) {
-					strExpirationDate = formatarData_${instanceId}( new Date(data_in[i].expirationDate) );
-				} else {
-					strExpirationDate = "Não Expira";
+				strExpirationDate = formatarData_${instanceId}( new Date(data_in[i].expirationDate) );
+			
+				var strDocumentoExpira = "Sim";
+			
+				if (data_in[i].expirationDate == data_in[i].createDate) {
 					isInformation = true;
 					
 					data_in[i].isDanger = false;
 					data_in[i].isWarning = false;
 					data_in[i].isSuccess = false;
-				}
+					
+					strDocumentoExpira = "Não";
+					strExpirationDate = "";
+				} 
+			
+				data_in[i].strDocumentoExpira = strDocumentoExpira;
 			
 				data_in[i].strExpirationDate = strExpirationDate;
-			
+				
 				data_in[i].isInformation = isInformation;
 			
 				all_data_${instanceId}.push(data_in[i]);
@@ -249,6 +245,7 @@
 		str_html_table +=					'<th> <span class="fancytree-icon fluigicon fluigicon-file"> </span> </th>';
 		str_html_table +=					'<th>Nome do Documento</th>';
 		str_html_table +=					'<th>Data de Vencimento</th>';
+		str_html_table +=					'<th>Documento Expira?</th>';
 		str_html_table +=				'</thead>';
 		
 		str_html_table +=		'<tbody>';
@@ -294,9 +291,8 @@
 					str_html_table +=					'<td class="' + '' + '"> <a title="Ir para a pasta do documento" target="_blank" href="/portal/p/1/ecmnavigation?app_ecm_navigation_folder=' + item["documentPK.documentId"] + '"> <span class="fancytree-icon fluigicon fluigicon-file"> </span> </a> </td>';
 					str_html_table +=					'<td class="' + tdStyle + '">'  + item.documentTitle +  ' </td>';
 					str_html_table +=					'<td class="' + tdStyle + '">' + item.strExpirationDate +'</td>';
+					str_html_table +=					'<td class="' + tdStyle + '">' + item.strDocumentoExpira +'</td>';
 					str_html_table +=				'</tr>';				
-					
-					console.log(item);
 				}		
 				
 			}
@@ -311,6 +307,10 @@
 		$("#container_${instanceId}").html(str_html_table);
 		
 		$('#table_1_${instanceId}').DataTable({
+			/*columnDefs: [ {
+			  targets: 3,
+			  render: $.fn.dataTable.render.moment( 'DD/MM/YYYY', 'DD/MM/YYYY', 'pt' )
+			} ],*/
 			language: {
 				"sEmptyTable": "Nenhum registro encontrado",
 				"sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -349,8 +349,6 @@
 		var doc_expirado = $("#doc_expirado_${instanceId}").is(':checked');
 		var doc_nao_expira = $("#doc_nao_expira_${instanceId}").is(':checked');
 	
-		console.log("doc_no_prazo: " + doc_no_prazo + ", doc_a_expirar: " + doc_a_expirar + ", doc_expirado: " + doc_expirado + ", doc_nao_expira: " + doc_nao_expira);
-		
 		writeTable_${instanceId}(doc_no_prazo, doc_a_expirar, doc_expirado, doc_nao_expira);
 	};
 	
