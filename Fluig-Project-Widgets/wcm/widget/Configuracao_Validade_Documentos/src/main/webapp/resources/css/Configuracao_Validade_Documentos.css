@@ -1,0 +1,23 @@
+.documento_vermelho {
+	background-color: red !important;
+	font-weight: bold !important;
+	color: black !important;
+}
+
+.documento_amarelo {
+	background-color: yellow !important;
+	font-weight: bold !important;
+	color: black !important;
+}
+
+.documento_verde {
+	background-color: green !important;
+	font-weight: bold !important;
+	color: black !important;
+}
+
+.documento_azul {
+	background-color: blue !important;
+	font-weight: bold !important;
+	color: black !important;
+}

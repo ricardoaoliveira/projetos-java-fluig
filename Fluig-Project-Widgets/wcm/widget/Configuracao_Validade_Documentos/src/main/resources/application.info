@@ -1,0 +1,20 @@
+application.type=widget
+application.code=Configuracao_Validade_Documentos
+application.title=Configuracao Validade Documentos
+application.description=Configuracao Validade Documentos
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=Lenovo-PC
+developer.name=Ricardo Oliveira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+
+application.resource.js.1=/resources/js/Configuracao_Validade_Documentos.js
+application.resource.css.1=/resources/css/Configuracao_Validade_Documentos.css
+
+application.resource.js.3=/resources/js/datatables.min.js
+application.resource.js.2=/resources/js/datetime.js
+application.resource.css.3=/resources/js/datatables.min.css
