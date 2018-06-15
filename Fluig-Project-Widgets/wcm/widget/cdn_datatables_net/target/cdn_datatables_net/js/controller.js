@@ -282,11 +282,13 @@ var buildHtmlValidate = function(index, item) {
 	return strHtmlValidate;
 };
 
+var listConfiguracaoValidadeDocumento = null;
+
 var writeTable = function(isSuccess, isWarning, isDanger, isInformation) {
 
 	//ordenarDocumentosPorVencimentoDescendente();
 
-	var listConfiguracaoValidadeDocumento = findAllConfiguracaoValidadeDocumento();
+	listConfiguracaoValidadeDocumento = findAllConfiguracaoValidadeDocumento();
 	var configuracaoValidadeDocumento = null;
 	
 	var str_html_table = '<div class="table">';
@@ -350,20 +352,6 @@ var writeTable = function(isSuccess, isWarning, isDanger, isInformation) {
 				str_html_table +=					'<td class="' + tdStyle + '">' + buildHtmlDocumentoExpira(item); + '</td>';
 				str_html_table +=					'<td class="' + tdStyle + '">' + buildHtmlValidate(i, item) +'</td>';					
 				str_html_table +=				'</tr>';		
-				
-				configuracaoValidadeDocumento = getConfiguracaoValidadeDocumento(item["documentPK.documentId"], listConfiguracaoValidadeDocumento);
-				console.log("configuracaoValidadeDocumento");
-				console.log(configuracaoValidadeDocumento);
-				if (configuracaoValidadeDocumento != null) {
-					$("[name=documentoExpira_" + item.cod_doc + "]").val( configuracaoValidadeDocumento.expira );
-//					if ( configuracaoValidadeDocumento.expira == "on" ) {
-//						$("#validade_" + item.cod_doc).val( configuracaoValidadeDocumento.validade );
-//						$("#validade_" + id).attr("disabled", true);
-//					} else {
-//						$("validade_" + item.cod_doc).val( "" );	
-//						$("#validade_" + id).attr("disabled", true);
-//					}
-				}
 			}		
 			
 		}
@@ -376,6 +364,8 @@ var writeTable = function(isSuccess, isWarning, isDanger, isInformation) {
 	str_html_table +=	'</div>';
 		
 	$("#container").html(str_html_table);
+	
+	updateTable();
 	
 	$('#table_1').DataTable({
 		"ordering": false,
@@ -424,6 +414,72 @@ var filtrarDocumentos = function() {
 	var doc_nao_expira = $("#doc_nao_expira").is(':checked');
 
 	writeTable(doc_no_prazo, doc_a_expirar, doc_expirado, doc_nao_expira);
+};
+
+var updateTable = function() {
+	
+	listConfiguracaoValidadeDocumento = findAllConfiguracaoValidadeDocumento();
+	
+	var configuracaoValidadeDocumento = null;
+	var canAdd = null;	
+	
+	for (var i=0; i<all_data.length; i++) {
+		
+		var item = all_data[i];
+		
+		if (!item.folder) {
+		
+			var cod_doc = item["documentPK.documentId"];
+			
+			if (cod_doc != null) {
+				updateTableRow( cod_doc );	
+			}
+		}		
+	}
+};
+
+var updateTableRow = function(cod_doc) {
+	
+	var configuracaoValidadeDocumento = getConfiguracaoValidadeDocumento(cod_doc, listConfiguracaoValidadeDocumento);
+	
+	console.log("configuracaoValidadeDocumento");
+	console.log(configuracaoValidadeDocumento);
+	
+	if (configuracaoValidadeDocumento != null) {
+		
+		var item = {
+			cod_doc: configuracaoValidadeDocumento.cod_doc,
+			expira: configuracaoValidadeDocumento.expira,
+			ds_descriptor: configuracaoValidadeDocumento.ds_descriptor,
+			validade: configuracaoValidadeDocumento.validade
+		};
+		
+		//setDocumento(item);
+		
+		if ( configuracaoValidadeDocumento.expira == "on" ) {
+			console.log("expira on checked");
+			$("#documentoExpiraSim_" + configuracaoValidadeDocumento.cod_doc ).attr("checked", true);
+			$("#documentoExpiraNao_" + configuracaoValidadeDocumento.cod_doc ).attr("checked", false);
+		} else {
+			console.log("expira não checked");
+			$("#documentoExpiraSim_" + configuracaoValidadeDocumento.cod_doc ).attr("checked", false);
+			$("#documentoExpiraNao_" + configuracaoValidadeDocumento.cod_doc ).attr("checked", true);
+		}
+		
+		if ( configuracaoValidadeDocumento.expira == "on" ) {
+			console.log("expira on validade");
+			$("#validade_" + configuracaoValidadeDocumento.cod_doc).attr("disabled", false);
+			$("#validade_" + configuracaoValidadeDocumento.cod_doc).val( configuracaoValidadeDocumento.validade );						
+		} else {
+			console.log("expira não validade disabled");
+			$("#validade_" + configuracaoValidadeDocumento.cod_doc).attr("disabled", false);
+			$("#validade_" + configuracaoValidadeDocumento.cod_doc).val( "" );	
+			$("#validade_" + configuracaoValidadeDocumento.cod_doc).attr("disabled", true);
+		}
+	} else {
+		$("#validade_" + cod_doc).attr("disabled", false);
+		$("#validade_" + cod_doc).val( 30 );
+	}
 };
 
 $(document).ready(function() {

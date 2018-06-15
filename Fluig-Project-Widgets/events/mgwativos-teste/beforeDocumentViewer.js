@@ -16,9 +16,9 @@ function beforeDocumentViewer(){
     //Verificando se a data de validade do documento é igual a data atual
     var documentExpiresToday = strDate.equals(documentExpirationDate)
     
-    if (docExpirationDate != null && docExpirationDate.before(new java.util.Date())) {
-    	throw ("Esse documento já venceu, não pode ser visualizado.")
-    }
+    //if (docExpires && docExpirationDate != null && docExpirationDate.before(new java.util.Date())) {
+    //	throw ("Esse documento já venceu, não pode ser visualizado.")
+    //}
     
 	if(docExpires && documentExpiresToday){
 		log.warn("The document " + doc.getDocumentId() + " it cannot be viewed by user " + getValue("WKUser") + " because the due date is equal to the current date");
