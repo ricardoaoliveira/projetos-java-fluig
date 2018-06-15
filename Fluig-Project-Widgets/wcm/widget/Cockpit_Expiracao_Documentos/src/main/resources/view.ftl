@@ -44,6 +44,10 @@
 
 </div>
 
+<link rel="stylesheet" type="text/css" href="/cdn_datatables_net/js/DataTables/datatables.css">
+<script type="text/javascript" charset="utf8" src="/cdn_datatables_net/js/DataTables/datatables.js"></script>
+<script type="text/javascript" charset="utf8" src="/cdn_datatables_net/js/DataTables/datetime.js"></script>
+
 <script src="/webdesk/vcXMLRPC.js" type="text/javascript"></script>
 
 <script type="text/javascript">

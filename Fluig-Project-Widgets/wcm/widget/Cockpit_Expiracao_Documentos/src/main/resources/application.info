@@ -8,10 +8,6 @@ application.renderer=freemarker
 application.resource.js.1=/resources/js/Cockpit_Expiracao_Documentos.js
 application.resource.css.1=/resources/css/Cockpit_Expiracao_Documentos.css
 
-application.resource.js.3=/resources/js/datatables.min.js
-application.resource.js.2=/resources/js/datetime.js
-application.resource.css.3=/resources/js/datatables.min.css
-
 developer.code=Lenovo-PC
 developer.name=Ricardo Oliveira
 developer.url=http://www.fluig.com

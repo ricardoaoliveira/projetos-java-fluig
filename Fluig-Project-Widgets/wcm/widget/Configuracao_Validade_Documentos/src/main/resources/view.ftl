@@ -219,6 +219,31 @@
 		});
 	};
 	
+	var buildHtmlDocumentoExpira_${instanceId} = function(index) {
+		var strHtmlDocExpira = '<div class="row col-md-12 form-inline">';
+		strHtmlDocExpira 	+= '	<div class="radio"> ';
+		strHtmlDocExpira 	+= '		<label>';
+		strHtmlDocExpira 	+= '			<input type="radio" name="documentoExpira__${instanceId}' + index +'" id="documentoExpiraSim__${instanceId}' + index +'" value="Sim" checked onchange="changeDocumentoExpira_${instanceId}(' + index + ');">';
+		strHtmlDocExpira 	+= '			Sim';
+		strHtmlDocExpira 	+= '		</label>';
+		strHtmlDocExpira 	+= '	</div>';
+		strHtmlDocExpira 	+= '	<div class="radio">';
+		strHtmlDocExpira 	+= '		<label>';
+		strHtmlDocExpira 	+= '			<input type="radio" name="documentoExpira__${instanceId}' + index +'"" id="documentoExpiraNao__${instanceId}' + index +'"" value="Não" onchange="changeDocumentoExpira_${instanceId}(' + index + ');">';
+		strHtmlDocExpira 	+= '			Não';
+		strHtmlDocExpira 	+= '		</label>';
+		strHtmlDocExpira 	+= '	</div>';
+		strHtmlDocExpira 	+= '</div>';
+		return strHtmlDocExpira;
+	};
+	
+	var buildHtmlValidate_${instanceId} = function(index, item) {
+		var strHtmlValidate = '	<div class="form-group">';
+		strHtmlValidate 	+= '	<input type="number" id="validade_${instanceId}' + index +'" min="1" step="1" class="form-control" onchange="setValidateInDays_${instanceId}(this,' + item["documentPK.documentId"] + ');" />';
+		strHtmlValidate 	+= '</div>';		
+		return strHtmlValidate;
+	};
+	
 	var writeTable_${instanceId} = function(isSuccess, isWarning, isDanger, isInformation) {
 	
 		//ordenarDocumentosPorVencimentoDescendente();
@@ -230,8 +255,8 @@
 		str_html_table +=					'<th> <span class="fancytree-icon fluigicon fluigicon-file"> </span> </th>';
 		str_html_table +=					'<th>Nome da Pasta';
 		str_html_table +=					'<th>Nome do Documento</th>';
-		str_html_table +=					'<th>Data de Vencimento</th>';
 		str_html_table +=					'<th>Documento Expira?</th>';
+		str_html_table +=					'<th>Validade</th>';
 		str_html_table +=				'</thead>';
 		
 		str_html_table +=		'<tbody>';
@@ -281,8 +306,8 @@
 					str_html_table +=					'<td class="' + '' + '"> <a title="Ir para a pasta do documento" target="_blank" href="/portal/p/1/ecmnavigation?app_ecm_navigation_folder=' + item["documentPK.documentId"] + '"> <span class="fancytree-icon fluigicon fluigicon-file"> </span> </a> </td>';
 					str_html_table +=					'<td class="' + tdStyle + '">'  + item.folderTitle +  ' </td>';
 					str_html_table +=					'<td class="' + tdStyle + '">'  + item.documentTitle +  ' </td>';
-					str_html_table +=					'<td class="' + tdStyle + '">' + item.strExpirationDate +'</td>';
-					str_html_table +=					'<td class="' + tdStyle + '">' + item.strDocumentoExpira +'</td>';
+					str_html_table +=					'<td class="' + tdStyle + '">' + buildHtmlDocumentoExpira_${instanceId}(i); + '</td>';
+					str_html_table +=					'<td class="' + tdStyle + '">' + buildHtmlValidate_${instanceId}(i, item) +'</td>';					
 					str_html_table +=				'</tr>';				
 				}		
 				
