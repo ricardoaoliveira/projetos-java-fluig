@@ -89,7 +89,7 @@ public class ECMDocumentService {
     		
     		result.getItem().get(0).setExpirationDate(date2);
     		
-    		DocumentDtoArray documentDtoArray = new DocumentDtoArray();
+    		//DocumentDtoArray documentDtoArray = new DocumentDtoArray();
     		
     		Attachment attachment = new Attachment();
         	
