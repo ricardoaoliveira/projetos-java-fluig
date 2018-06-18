@@ -169,8 +169,11 @@ public class ECMDocumentService {
     			result.getItem().get(0).setExpires(true);
     			
     			Calendar now = Calendar.getInstance();
-        		now.setTime(result.getItem().get(0).getCreateDate().toGregorianCalendar().getTime());
+        		now.setTime(result.getItem().get(0).getLastModifiedDate().toGregorianCalendar().getTime());
+
+        		System.out.println("DAY_OF_YEAR ANTES:  " + now.get(Calendar.DAY_OF_YEAR) + " - " + now.getTime());
         		now.add(Calendar.DAY_OF_YEAR, Integer.valueOf(validade));
+        		System.out.println("DAY_OF_YEAR DEPOIS: " + now.get(Calendar.DAY_OF_YEAR) + " - " + now.getTime());
         		now.set(Calendar.MINUTE, 0);
         		now.set(Calendar.SECOND, 0);
         		now.set(Calendar.MILLISECOND, 0);

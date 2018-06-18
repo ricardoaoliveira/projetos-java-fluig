@@ -175,7 +175,7 @@ public class ECMDatasetService {
 				
 				result.add(item);
 				
-				ecmDocumentService.updateDocumentGED(Integer.valueOf(cod_doc), expira, validade);
+				ecmDocumentService.updateDocumentGED(Integer.valueOf(cod_doc), expira, validade);	
 				
 				System.out.println("cod_doc: " + cod_doc + ", expira: " + expira + ", validade: " + validade);
 			}
