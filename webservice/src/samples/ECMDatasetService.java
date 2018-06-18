@@ -1,5 +1,8 @@
 package samples;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.totvs.technology.ecm.dataservice.ws.DatasetDto;
 import com.totvs.technology.ecm.dataservice.ws.ECMDatasetServiceService;
 import com.totvs.technology.ecm.dataservice.ws.SearchConstraintDto;
@@ -112,7 +115,9 @@ public class ECMDatasetService {
 		}
     }
     
-    public void getDatasetConfiguracaoValidadeDocumento() throws Exception {
+    public List<ConfiguracaoValidadeDocumentoVO> getDatasetConfiguracaoValidadeDocumento() throws Exception {
+    	List<ConfiguracaoValidadeDocumentoVO> result = new ArrayList<ConfiguracaoValidadeDocumentoVO>();
+    	
     	System.out.println("\nMétodo getDataset\n");
 		this.nomeDataset = "dsConfiguracao_Validade_Documento";
 		
@@ -154,12 +159,19 @@ public class ECMDatasetService {
 			// Retorna valores.
 			for (int j = 0; j < this.datasetDto.getValues().size(); j++) {
 				System.out.println("	" + this.datasetDto.getValues().get(j).getValue());
+				List<Object> arrayObject = this.datasetDto.getValues().get(j).getValue();
+				Object cod_doc = arrayObject.get(6);
+				Object expira = arrayObject.get(8);
+				Object validade = arrayObject.get(10);
+				System.out.println("cod_doc: " + cod_doc + ", expira: " + expira + ", validade: " + validade);
 			}
 			
 			System.out.println("");
 		} else {
 			System.out.println("Dataset não encontrado!");
 		}
+		
+		return result;
     }
     
     private ECMDatasetServiceService instanceDatasetService() {
