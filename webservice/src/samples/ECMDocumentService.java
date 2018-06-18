@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -118,6 +119,77 @@ public class ECMDocumentService {
 //    		}else{
 //    			System.out.println("Arquivo " + file.getName() + " não encontrado.");
 //    		}
+        	
+        	attachment.setFileName(result.getItem().get(0).getDocumentDescription());
+        	attachment.setPrincipal(true);
+        	
+        	AttachmentArray attachmentArray = new AttachmentArray();
+        	attachmentArray.getItem().add(attachment);
+    		
+    		DocumentSecurityConfigDtoArray documentSecurityConfigDtoArray = new DocumentSecurityConfigDtoArray();
+    		ApproverDtoArray approverDtoArray = new ApproverDtoArray();
+    		RelatedDocumentDtoArray relatedDocumentDtoArray = new RelatedDocumentDtoArray();
+    		
+    		WebServiceMessageArray webServiceMessageArray = documentService.updateDocument(this.userId, this.userPassword, 1, result, attachmentArray, documentSecurityConfigDtoArray, approverDtoArray, relatedDocumentDtoArray);
+    		
+    		// Mostra resultado.
+			if (webServiceMessageArray.getItem().get(0).getDocumentId() > 0) {
+				System.out.println("Documento " + webServiceMessageArray.getItem().get(0).getDocumentId() + " foi atualizado!");
+			} else {
+				System.out.println(webServiceMessageArray.getItem().get(0).getWebServiceMessage());
+			}
+    		
+            System.out.println("result: " + result);
+            
+    	} catch(Exception e) {
+    		System.out.println("Error: " + e.getMessage());
+    	}
+    }
+    
+    public boolean isInteger(String value) {
+    	
+    	try {
+    		Integer.valueOf(value);
+    	} catch(NumberFormatException nfe) {
+    		return false;
+    	}
+    	
+    	return true;
+    }
+    
+    public void updateDocumentGED(Integer cod_doc, String expira, String validade) throws Exception {
+    	
+    	try {
+    		DocumentDtoArray result = documentService.getActiveDocument(this.userId, this.userPassword, 1, cod_doc, this.userId); 
+
+    		int version = result.getItem().get(0).getVersion();
+    		String fileName = result.getItem().get(0).getDocumentDescription();
+    		
+    		if (expira != null && "on".equalsIgnoreCase(expira) && isInteger(validade)) {
+    			result.getItem().get(0).setExpires(true);
+    			
+    			Calendar now = Calendar.getInstance();
+        		now.setTime(result.getItem().get(0).getCreateDate().toGregorianCalendar().getTime());
+        		now.add(Calendar.DAY_OF_YEAR, Integer.valueOf(validade));
+        		now.set(Calendar.MINUTE, 0);
+        		now.set(Calendar.SECOND, 0);
+        		now.set(Calendar.MILLISECOND, 0);
+        		now.set(Calendar.HOUR_OF_DAY, 0);
+        		
+        		GregorianCalendar gc = new GregorianCalendar();
+        		gc.setTime(now.getTime());
+        		XMLGregorianCalendar xmlGc = DatatypeFactory.newInstance().newXMLGregorianCalendar(gc);
+        		
+        		result.getItem().get(0).setExpirationDate(xmlGc);
+    			
+    		} else {
+    			result.getItem().get(0).setExpires(false);	
+    		}
+    		
+    		Attachment attachment = new Attachment();
+        	
+    		byte[] content = documentService.getDocumentContent(this.userId, this.userPassword, 1, cod_doc, this.userId, version, result.getItem().get(0).getPhisicalFile());
+    		attachment.setFilecontent( content );
         	
         	attachment.setFileName(result.getItem().get(0).getDocumentDescription());
         	attachment.setPrincipal(true);

@@ -118,6 +118,8 @@ public class ECMDatasetService {
     public List<ConfiguracaoValidadeDocumentoVO> getDatasetConfiguracaoValidadeDocumento() throws Exception {
     	List<ConfiguracaoValidadeDocumentoVO> result = new ArrayList<ConfiguracaoValidadeDocumentoVO>();
     	
+    	ConfiguracaoValidadeDocumentoVO item = null;
+    	
     	System.out.println("\nMétodo getDataset\n");
 		this.nomeDataset = "dsConfiguracao_Validade_Documento";
 		
@@ -156,13 +158,25 @@ public class ECMDatasetService {
 			System.out.println("Colunas: " + coluna);
 			System.out.println("Valores: ");
 			
+			ECMDocumentService ecmDocumentService = new ECMDocumentService();
+			
 			// Retorna valores.
 			for (int j = 0; j < this.datasetDto.getValues().size(); j++) {
 				System.out.println("	" + this.datasetDto.getValues().get(j).getValue());
 				List<Object> arrayObject = this.datasetDto.getValues().get(j).getValue();
-				Object cod_doc = arrayObject.get(6);
-				Object expira = arrayObject.get(8);
-				Object validade = arrayObject.get(10);
+				String cod_doc = (String) arrayObject.get(6);
+				String expira = (String) arrayObject.get(8);
+				String validade = (String) arrayObject.get(10);
+				
+				item = new ConfiguracaoValidadeDocumentoVO();
+				item.setCod_doc(cod_doc);
+				item.setExpira(expira);
+				item.setValidade(validade);
+				
+				result.add(item);
+				
+				ecmDocumentService.updateDocumentGED(Integer.valueOf(cod_doc), expira, validade);
+				
 				System.out.println("cod_doc: " + cod_doc + ", expira: " + expira + ", validade: " + validade);
 			}
 			
