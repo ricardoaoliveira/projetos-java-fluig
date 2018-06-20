@@ -5,6 +5,7 @@
   <classpathentry kind="var" path="M2_REPO/javax/servlet/javax.servlet-api/3.0.1/javax.servlet-api-3.0.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/servlet/jsp/jsp-api/2.2/jsp-api-2.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/mail/mail/1.4.4/mail-1.4.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/transaction/jta/1.1/jta-1.1.jar"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="var" path="M2_REPO/com/fluig/foundation-integration-idp-api/1.4.1/foundation-integration-idp-api-1.4.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/fluig/wcm-common/1.4.1/wcm-common-1.4.1.jar"/>
@@ -30,4 +31,8 @@
   <classpathentry kind="var" path="M2_REPO/javassist/javassist/3.12.1.GA/javassist-3.12.1.GA.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/codehaus/jackson/jackson-mapper-asl/1.9.11/jackson-mapper-asl-1.9.11.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/codehaus/jackson/jackson-core-asl/1.9.11/jackson-core-asl-1.9.11.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mchange/c3p0/0.9.5.1/c3p0-0.9.5.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mchange/mchange-commons-java/0.2.10/mchange-commons-java-0.2.10.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/quartz-scheduler/quartz/2.1.7/quartz-2.1.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/c3p0/c3p0/0.9.1.1/c3p0-0.9.1.1.jar"/>
 </classpath>

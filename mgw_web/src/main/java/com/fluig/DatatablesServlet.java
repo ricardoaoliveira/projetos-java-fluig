@@ -2,8 +2,6 @@ package com.fluig;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,9 +20,11 @@ public class DatatablesServlet extends HttpServlet {
         // Set response content type
         response.setContentType("application/json; charset=UTF-8");
 
+        System.out.println("DatatablesServlet - teste");
+        
         // Actual logic goes here.
         PrintWriter out = response.getWriter();
-        out.println("teste");
+        out.println("DatatablesServlet - teste");
     }
     
 }
