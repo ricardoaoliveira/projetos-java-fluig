@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/org/quartz-scheduler/quartz/2.3.0/quartz-2.3.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mchange/c3p0/0.9.5.2/c3p0-0.9.5.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mchange/mchange-commons-java/0.2.11/mchange-commons-java-0.2.11.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/zaxxer/HikariCP-java6/2.3.13/HikariCP-java6-2.3.13.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.8.0-beta2/slf4j-api-1.8.0-beta2.jar"/>
+</classpath>
