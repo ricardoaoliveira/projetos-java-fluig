@@ -1,0 +1,98 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide-carousel.min.css">
+<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide-treeview.min.css">
+
+<link rel="stylesheet" type="text/css" href="js/DataTables/datatables.css">
+
+<script src="portal/resources/js/jquery.js"></script>
+<script src="portal/resources/js/jquery-ui.min.js"></script>
+<script src="portal/resources/js/mustache/mustache-min.js"></script>
+<script src="portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+<script src="portal/resources/style-guide/js/fluig-style-guide-carousel.min.js"></script>
+<script src="portal/resources/style-guide/js/fluig-style-guide-chart.min.js"></script>
+<script src="portal/resources/style-guide/js/fluig-style-guide-treeview.min.js"></script>
+
+<script type="text/javascript" charset="utf8" src="js/DataTables/datatables.js"></script>
+<script type="text/javascript" charset="utf8" src="js/DataTables/datetime.js"></script>
+
+<script src="/webdesk/vcXMLRPC.js" type="text/javascript"></script>
+
+<script type="text/javascript" charset="utf8" src="js/validade_documentos/controller.js"></script>
+
+</head>
+<style type="text/css">
+	.documento_vermelho {
+		background-color: red !important;
+		font-weight: bold !important;
+		color: black !important;
+	}
+	
+	.documento_amarelo {
+		background-color: yellow !important;
+		font-weight: bold !important;
+		color: black !important;
+	}
+	
+	.documento_verde {
+		background-color: green !important;
+		font-weight: bold !important;
+		color: black !important;
+	}
+	
+	.documento_azul {
+		background-color: blue !important;
+		font-weight: bold !important;
+		color: black !important;
+	}
+</style>
+<body>
+    <div class="fluig-style-guide">
+		
+		<h2 class="page-header"> 
+		<span class="fluigicon fluigicon-replace-file"></span>
+			Validade de Documentos
+		</h2>
+	
+		<div class="row col-md-12 form-inline" align="right">
+			<label>Exibir: </label>
+			<div class="checkbox">
+				<label style="color: green; font-weight: bold;">
+					<input type="checkbox" id="doc_no_prazo" name="doc_no_prazo" checked onchange="filtrarDocumentos();"> 
+					No Prazo
+				</label>
+			</div>
+			<div class="checkbox">
+				<label style="color: yellow; font-weight: bold;">
+					<input type="checkbox" id="doc_a_expirar" name="doc_a_expirar" checked onchange="filtrarDocumentos();"> 
+					À Expirar
+				</label>
+			</div>
+			<div class="checkbox">
+				<label style="color: red; font-weight: bold;">
+					<input type="checkbox" id="doc_expirado" name="doc_expirado" checked onchange="filtrarDocumentos();"> 
+					Expirado
+				</label>
+			</div>
+			<div class="checkbox">
+				<label style="color: blue; font-weight: bold;">
+					<input type="checkbox" id="doc_nao_expira" name="doc_nao_expira" onchange="filtrarDocumentos();"> 
+					Não Expira
+				</label>
+			</div>
+		</div>
+	
+		<div class="row col-md-12">
+			<br/>
+		</div>
+	
+		<div id="container" class="row col-md-12">
+			
+		</div>	
+			
+	</div>
+	
+</body>
+
+</html>
