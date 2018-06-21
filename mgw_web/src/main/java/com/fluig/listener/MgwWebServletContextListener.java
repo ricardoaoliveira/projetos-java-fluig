@@ -47,7 +47,7 @@ public class MgwWebServletContextListener implements ServletContextListener {
 				.build();
 		
 		SimpleScheduleBuilder simpleScheduler = SimpleScheduleBuilder.simpleSchedule()
-				.withIntervalInMinutes(20)
+				.withIntervalInMinutes(5)
 				.repeatForever();
 
 		Trigger trigger = TriggerBuilder.newTrigger()
