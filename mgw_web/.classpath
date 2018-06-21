@@ -35,4 +35,5 @@
   <classpathentry kind="var" path="M2_REPO/com/mchange/mchange-commons-java/0.2.10/mchange-commons-java-0.2.10.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/quartz-scheduler/quartz/2.1.7/quartz-2.1.7.jar"/>
   <classpathentry kind="var" path="M2_REPO/c3p0/c3p0/0.9.1.1/c3p0-0.9.1.1.jar"/>
+  <classpathentry kind="lib" path="lib/fluig-ws-client.jar"/>
 </classpath>

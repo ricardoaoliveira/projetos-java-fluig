@@ -42,7 +42,6 @@
         </auth-constraint>
     </security-constraint>
     
-
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>TOTVSTech</realm-name>
@@ -67,8 +66,14 @@
 	</servlet>
 	
 	<servlet-mapping>
-   <servlet-name>teste</servlet-name>
-   <url-pattern>/teste</url-pattern>
-</servlet-mapping>
+   		<servlet-name>teste</servlet-name>
+   		<url-pattern>/teste</url-pattern>
+	</servlet-mapping>
+
+	<listener>
+		<listener-class>
+             com.fluig.listener.MgwWebServletContextListener 
+        </listener-class>
+    </listener>
 
 </web-app>

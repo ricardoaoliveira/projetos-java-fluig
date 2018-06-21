@@ -233,6 +233,14 @@
 <!-- 		    <scope>test</scope> -->
 <!-- 		</dependency> -->
         
+        <dependency>
+        	<groupId>com.fluig</groupId>
+         	<artifactId>fluig-ws-client</artifactId>
+         	<version>1.0.0</version>
+         	<scope>system</scope>
+         	<systemPath>${basedir}/lib/fluig-ws-client.jar</systemPath>
+        </dependency>
+        
     </dependencies>
 
 </project>

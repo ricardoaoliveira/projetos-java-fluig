@@ -5,26 +5,24 @@ function beforeDocumentViewer(){
 	var docExpires = doc.getExpires();
 	var docExpirationDate = doc.getExpirationDate();
 
-	//Variáveis para manipular datas
-	var sdfDate = new java.text.SimpleDateFormat("yyyy-MM-dd");
-	var now = new Date();
+	var calDocExpirationDate = java.util.Calendar.getInstance();
+	calDocExpirationDate.setTime(docExpirationDate);
+	calDocExpirationDate.set(java.util.Calendar.MINUTE, 0);
+	calDocExpirationDate.set(java.util.Calendar.SECOND, 0);
+	calDocExpirationDate.set(java.util.Calendar.MILLISECOND, 0);
+	calDocExpirationDate.set(java.util.Calendar.HOUR_OF_DAY, 0);
 	
-	//Formatando datas
-	var strDate = sdfDate.format(now);
-    var documentExpirationDate = sdfDate.format(docExpirationDate);
+	var calNow = java.util.Calendar.getInstance();
+	calNow.set(java.util.Calendar.MINUTE, 0);
+	calNow.set(java.util.Calendar.SECOND, 0);
+	calNow.set(java.util.Calendar.MILLISECOND, 0);
+	calNow.set(java.util.Calendar.HOUR_OF_DAY, 0);
 	
-    //Verificando se a data de validade do documento é igual a data atual
-    var documentExpiresToday = strDate.equals(documentExpirationDate)
-    
-    //if (docExpires && docExpirationDate != null && docExpirationDate.before(new java.util.Date())) {
-    //	throw ("Esse documento já venceu, não pode ser visualizado.")
-    //}
-    
-	if(docExpires && documentExpiresToday){
+	if ( docExpires == true && calDocExpirationDate.before(calNow) || calDocExpirationDate.getTime().equals(calNow.getTime()) ) {
 		log.warn("The document " + doc.getDocumentId() + " it cannot be viewed by user " + getValue("WKUser") + " because the due date is equal to the current date");
-		throw ("Esse documento vence hoje, não pode ser visualizado.")
-	}else{
+		throw ("Esse documento venceu, não pode ser visualizado.")
+	} else {
 		log.info("This documment is allowed to visualization.")
 	}
-    
+	
 } 
