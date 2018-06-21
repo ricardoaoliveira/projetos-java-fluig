@@ -10,6 +10,7 @@ import org.quartz.SchedulerException;
 import org.quartz.SimpleScheduleBuilder;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
+import org.quartz.TriggerKey;
 import org.quartz.impl.StdSchedulerFactory;
 
 public class SimpleJob implements Job {
@@ -36,6 +37,10 @@ public class SimpleJob implements Job {
 		Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 		scheduler.scheduleJob(jobDetail, trigger);
 		scheduler.start();
+		
+		scheduler.unscheduleJob(new TriggerKey("trigger", "grupo"));
+		
+		scheduler.getContext();
 	}
 
 }

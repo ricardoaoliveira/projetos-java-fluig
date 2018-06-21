@@ -53,7 +53,7 @@ public class ECMDatasetService {
     public void changeMethod() throws Exception {
     	//this.getAvailableDatasets();
     	//this.getDatasetGroup();
-    	this.getDatasetConfiguracaoValidadeDocumento();
+    	this.updateConfiguracaoValidadeDocumento();
     }
     
     public void getAvailableDatasets() throws Exception {
@@ -115,7 +115,7 @@ public class ECMDatasetService {
 		}
     }
     
-    public List<ConfiguracaoValidadeDocumentoVO> getDatasetConfiguracaoValidadeDocumento() throws Exception {
+    public void updateConfiguracaoValidadeDocumento() throws Exception {
     	List<ConfiguracaoValidadeDocumentoVO> result = new ArrayList<ConfiguracaoValidadeDocumentoVO>();
     	
     	ConfiguracaoValidadeDocumentoVO item = null;
@@ -168,12 +168,12 @@ public class ECMDatasetService {
 				String expira = (String) arrayObject.get(8);
 				String validade = (String) arrayObject.get(10);
 				
-				item = new ConfiguracaoValidadeDocumentoVO();
-				item.setCod_doc(cod_doc);
-				item.setExpira(expira);
-				item.setValidade(validade);
-				
-				result.add(item);
+//				item = new ConfiguracaoValidadeDocumentoVO();
+//				item.setCod_doc(cod_doc);
+//				item.setExpira(expira);
+//				item.setValidade(validade);
+//				
+//				result.add(item);
 				
 				ecmDocumentService.updateDocumentGED(Integer.valueOf(cod_doc), expira, validade);	
 				
@@ -184,8 +184,6 @@ public class ECMDatasetService {
 		} else {
 			System.out.println("Dataset não encontrado!");
 		}
-		
-		return result;
     }
     
     private ECMDatasetServiceService instanceDatasetService() {
