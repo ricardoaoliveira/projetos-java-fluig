@@ -1,3 +1,9 @@
+com\fluig\job\DocumentUpdateJob.class
+com\fluig\webservice\ConfiguracaoValidadeDocumentoVO.class
+com\fluig\webservice\ECMDatasetService.class
+com\fluig\listener\MgwWebServletContextListener.class
+com\fluig\QuartzMain.class
 com\fluig\DatatablesAppRest.class
 com\fluig\DatatablesServiceRest.class
 com\fluig\DatatablesServlet.class
+com\fluig\webservice\ECMDocumentService.class
