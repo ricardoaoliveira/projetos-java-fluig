@@ -2,6 +2,9 @@ package br.com.totvs.mgw.wsclients;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.totvs.technology.ecm.dataservice.ws.DatasetDto;
 import com.totvs.technology.ecm.dataservice.ws.ECMDatasetServiceService;
 import com.totvs.technology.ecm.dataservice.ws.SearchConstraintDto;
@@ -12,6 +15,8 @@ import net.java.dev.jaxb.array.StringArray;
 
 public class ECMDatasetService {
 
+	Logger logger = LoggerFactory.getLogger(ECMDatasetService.class);
+	
 	String fluigURL = "http://mgwativosgestaoeadmi3732.fluig.cloudtotvs.com.br";
     String userId = "admin";
     String userLogin = "admin";
@@ -115,8 +120,10 @@ public class ECMDatasetService {
     }
     
     public void updateConfiguracaoValidadeDocumento() throws Exception {
-    	System.out.println("\nMétodo getDataset\n");
-		this.nomeDataset = "dsConfiguracao_Validade_Documento";
+    	
+    	logger.info("updateConfiguracaoValidadeDocumento - inicio");
+    	
+    	this.nomeDataset = "dsConfiguracao_Validade_Documento";
 		
 		// Campos que serão retornados.
 		this.camposDataset.getItem().add("cod_doc");
@@ -163,21 +170,15 @@ public class ECMDatasetService {
 				String expira = (String) arrayObject.get(8);
 				String validade = (String) arrayObject.get(10);
 				
-//				item = new ConfiguracaoValidadeDocumentoVO();
-//				item.setCod_doc(cod_doc);
-//				item.setExpira(expira);
-//				item.setValidade(validade);
-//				
-//				result.add(item);
-				
 				ecmDocumentService.updateDocumentGED(Integer.valueOf(cod_doc), expira, validade);	
 				
-				System.out.println("cod_doc: " + cod_doc + ", expira: " + expira + ", validade: " + validade);
+				logger.info("cod_doc: " + cod_doc + ", expira: " + expira + ", validade: " + validade);
 			}
 			
-			System.out.println("");
+			logger.info("updateConfiguracaoValidadeDocumento - final");
 		} else {
 			System.out.println("Dataset não encontrado!");
+			logger.info("updateConfiguracaoValidadeDocumento - dataset nao retornou resultados");
 		}
     }
     

@@ -12,6 +12,9 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.BindingProvider;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.totvs.technology.ecm.dm.ws.ApproverDtoArray;
 import com.totvs.technology.ecm.dm.ws.Attachment;
 import com.totvs.technology.ecm.dm.ws.AttachmentArray;
@@ -25,6 +28,8 @@ import com.totvs.technology.ecm.dm.ws.WebServiceMessageArray;
 
 public class ECMDocumentService {
 
+	Logger logger = LoggerFactory.getLogger(ECMDocumentService.class);
+	
 	String fluigURL = "http://mgwativosgestaoeadmi3732.fluig.cloudtotvs.com.br";
     String userId = "admin";
     String userLogin = "admin";
@@ -159,6 +164,8 @@ public class ECMDocumentService {
     
     public void updateDocumentGED(Integer cod_doc, String expira, String validade) throws Exception {
     	
+    	logger.info("updateDocumentGED: cod_doc: " + cod_doc + ", expira: " + expira + ", validade: " + validade);
+    	
     	try {
     		DocumentDtoArray result = documentService.getActiveDocument(this.userId, this.userPassword, 1, cod_doc, this.userId); 
 
@@ -166,6 +173,9 @@ public class ECMDocumentService {
     		String fileName = result.getItem().get(0).getDocumentDescription();
     		
     		if (expira != null && "on".equalsIgnoreCase(expira) && isInteger(validade)) {
+    			
+    			logger.info("updateDocumentGED: expira ");
+    			
     			result.getItem().get(0).setExpires(true);
     			
     			Calendar now = Calendar.getInstance();
@@ -186,6 +196,7 @@ public class ECMDocumentService {
         		result.getItem().get(0).setExpirationDate(xmlGc);
     			
     		} else {
+    			logger.info("updateDocumentGED: nao expira ");
     			result.getItem().get(0).setExpires(false);	
     		}
     		
@@ -208,15 +219,16 @@ public class ECMDocumentService {
     		
     		// Mostra resultado.
 			if (webServiceMessageArray.getItem().get(0).getDocumentId() > 0) {
+				logger.info("Documento " + webServiceMessageArray.getItem().get(0).getDocumentId() + " foi atualizado!");
 				System.out.println("Documento " + webServiceMessageArray.getItem().get(0).getDocumentId() + " foi atualizado!");
 			} else {
-				System.out.println(webServiceMessageArray.getItem().get(0).getWebServiceMessage());
+				logger.info("Falha ao atualizar documento: " + webServiceMessageArray.getItem().get(0).getWebServiceMessage());
 			}
     		
-            System.out.println("result: " + result);
+			logger.info("result: " + result);
             
     	} catch(Exception e) {
-    		System.out.println("Error: " + e.getMessage());
+    		logger.warn("Error: " + e.getMessage());
     	}
     }
     

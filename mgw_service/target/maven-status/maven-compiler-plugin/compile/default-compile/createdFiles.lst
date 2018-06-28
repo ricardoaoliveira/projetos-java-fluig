@@ -1,0 +1,7 @@
+br\com\totvs\mgw\util\MessageBundle.class
+br\com\totvs\mgw\wsclients\ECMDatasetService.class
+br\com\totvs\mgw\wsclients\ECMDocumentService.class
+br\com\totvs\mgw\exception\MgwException.class
+br\com\totvs\mgw\job\UpdateDocumentProperties.class
+br\com\totvs\mgw\util\MD5Util.class
+br\com\totvs\mgw\util\RandomUtil.class
