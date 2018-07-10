@@ -22,58 +22,58 @@ public class MgwWebServletContextListener implements ServletContextListener {
 	
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
-		log.info("ServletContextListener destroyed");
-		
-		Scheduler scheduler = null;
-		try {
-			scheduler = StdSchedulerFactory.getDefaultScheduler();
-		} catch (SchedulerException e) {
-			log.warn(e);
-		}
-		try {
-			scheduler.unscheduleJob(new TriggerKey("trigger", "doc_ged_update"));
-			log.info("Remove trigger doc_ged_update");
-		} catch (SchedulerException e) {
-			log.warn(e);
-		}
+//		log.info("ServletContextListener destroyed");
+//		
+//		Scheduler scheduler = null;
+//		try {
+//			scheduler = StdSchedulerFactory.getDefaultScheduler();
+//		} catch (SchedulerException e) {
+//			log.warn(e);
+//		}
+//		try {
+//			scheduler.unscheduleJob(new TriggerKey("trigger", "doc_ged_update"));
+//			log.info("Remove trigger doc_ged_update");
+//		} catch (SchedulerException e) {
+//			log.warn(e);
+//		}
 	}
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		log.info("ServletContextListener started");
-		
-		JobDetail jobDetail = JobBuilder.newJob(DocumentUpdateJob.class)
-				.withIdentity("job", "doc_ged_update")
-				.build();
-		
-		SimpleScheduleBuilder simpleScheduler = SimpleScheduleBuilder.simpleSchedule()
-				.withIntervalInMinutes(5)
-				.repeatForever();
-
-		Trigger trigger = TriggerBuilder.newTrigger()
-			.withIdentity("trigger", "doc_ged_update")
-			.withSchedule(simpleScheduler)
-			.build();
-		
-		Scheduler scheduler = null;
-		try {
-			scheduler = StdSchedulerFactory.getDefaultScheduler();
-		} catch (SchedulerException e) {
-			log.warn(e);
-		}
-		
-		try {
-			scheduler.scheduleJob(jobDetail, trigger);
-			log.info("Add trigger doc_ged_update");
-		} catch (SchedulerException e) {
-			log.warn(e);
-		}
-		
-		try {			
-			scheduler.start();
-		} catch (SchedulerException e) {
-			log.warn(e);
-		}
+//		log.info("ServletContextListener started");
+//		
+//		JobDetail jobDetail = JobBuilder.newJob(DocumentUpdateJob.class)
+//				.withIdentity("job", "doc_ged_update")
+//				.build();
+//		
+//		SimpleScheduleBuilder simpleScheduler = SimpleScheduleBuilder.simpleSchedule()
+//				.withIntervalInMinutes(5)
+//				.repeatForever();
+//
+//		Trigger trigger = TriggerBuilder.newTrigger()
+//			.withIdentity("trigger", "doc_ged_update")
+//			.withSchedule(simpleScheduler)
+//			.build();
+//		
+//		Scheduler scheduler = null;
+//		try {
+//			scheduler = StdSchedulerFactory.getDefaultScheduler();
+//		} catch (SchedulerException e) {
+//			log.warn(e);
+//		}
+//		
+//		try {
+//			scheduler.scheduleJob(jobDetail, trigger);
+//			log.info("Add trigger doc_ged_update");
+//		} catch (SchedulerException e) {
+//			log.warn(e);
+//		}
+//		
+//		try {			
+//			scheduler.start();
+//		} catch (SchedulerException e) {
+//			log.warn(e);
+//		}
 	}
 	
 }
